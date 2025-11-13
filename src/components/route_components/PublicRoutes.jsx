@@ -5,7 +5,7 @@ import Footer from "../layout_components/footer";
 
 const PublicRoutes = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col w-full">
       {/* Header Section */}
       <Header />
 
