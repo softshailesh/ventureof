@@ -10,7 +10,7 @@ const PublicRoutes = () => {
       <Header />
 
       {/* Page Content */}
-      <main className="flex-grow">
+      <main className="flex-grow w-full">
         <Outlet />
       </main>
 
