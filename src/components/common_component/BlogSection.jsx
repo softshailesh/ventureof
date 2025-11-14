@@ -12,7 +12,7 @@ const BlogSection = () => {
             </h2>
 
             {/* Blog Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl mx-auto">
 
                 {/* ========== BLOG CARD 1 ========== */}
                 <div className="w-full">

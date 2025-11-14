@@ -7,7 +7,7 @@ const BuildLegacySection = () => {
     <section className="w-full bg-[#798980] py-16 md:py-24 px-6 md:px-16 lg:px-28 ">
 
       {/* ================= SECTION 1 ================= */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center mb-20 max-w-7xl mx-auto">
 
         {/* Left Text Block */}
         <div>
