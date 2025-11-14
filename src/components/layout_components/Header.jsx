@@ -40,7 +40,7 @@ const Header = () => {
             </NavLink>
 
             <NavLink
-              to="/raise-capital"
+              to="/capital-venture"
               className={({ isActive }) =>
                 isActive
                   ? "text-[#87BC25] font-semibold whitespace-nowrap"

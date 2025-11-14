@@ -3,6 +3,7 @@ import { motion, useAnimationFrame } from "framer-motion";
 import investor_bg from "../../assets/investor_bg.webp";
 import investor_1 from "../../assets/investor_img_1.webp";
 import investor_2 from "../../assets/investor_img_2.webp";
+import StatsSlider from "./StatsSlider";
 
 const InvestorAbout = () => {
   const items = [
@@ -22,7 +23,7 @@ const InvestorAbout = () => {
 
   return (
     <div
-      className="w-full bg-center bg-cover relative overflow-hidden"
+      className="w-full bg-center bg-cover relative overflow-hidden "
       style={{ backgroundImage: `url(${investor_bg})` }}
     >
       {/* Overlay */}
@@ -102,7 +103,7 @@ const InvestorAbout = () => {
         </motion.div>
 
         {/* ===== Statistics Moving Section ===== */}
-        <section className="relative w-full py-14 md:py-20 text-center overflow-hidden">
+        {/* <section className="relative w-full py-14 md:py-20 text-center overflow-hidden">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -146,7 +147,9 @@ const InvestorAbout = () => {
               })}
             </motion.div>
           </div>
-        </section>
+        </section> */}
+        <StatsSlider />
+
       </div>
     </div>
   );
