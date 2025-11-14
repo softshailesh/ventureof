@@ -22,14 +22,14 @@ const Header = () => {
               className={({ isActive }) =>
                 isActive
                   ? "text-[#87BC25] font-semibold whitespace-nowrap"
-                  : "text-green-600 font-medium hover:text-green-700 whitespace-nowrap"
+                  : "text-gray-800 hover:text-green-700 whitespace-nowrap"
               }
             >
               About Us
             </NavLink>
 
             <NavLink
-              to="/invest"
+              to="/invest-venture"
               className={({ isActive }) =>
                 isActive
                   ? "text-[#87BC25] font-semibold whitespace-nowrap"
