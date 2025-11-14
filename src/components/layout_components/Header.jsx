@@ -7,9 +7,9 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-[#ECF3F2] border-b border-gray-200">
+    <nav className="bg-[#ECF3F2] border-b border-gray-200 sticky top-0 z-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex justify-between items-center h-[70px] md:h-[112px]">
+        <div className="flex justify-between items-center h-[70px] lg:h-[112px]">
           {/* Logo */}
           <div className="flex items-center w-[200px] h-[56px]">
             <img src={logo} alt="VentureOF logo" className="h-full w-auto" />
