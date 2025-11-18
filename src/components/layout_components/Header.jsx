@@ -29,7 +29,7 @@ const Header = () => {
             </NavLink>
 
             <NavLink
-              to="/invest-venture"
+              to="/investVenture"
               className={({ isActive }) =>
                 isActive
                   ? "text-[#87BC25] font-semibold whitespace-nowrap"
@@ -51,7 +51,7 @@ const Header = () => {
             </NavLink>
 
             <NavLink
-              to="/become-member"
+              to="/have-membership"
               className={({ isActive }) =>
                 isActive
                   ? "text-[#87BC25] font-semibold whitespace-nowrap"
