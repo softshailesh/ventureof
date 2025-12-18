@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Header from "../user_route/User_header";
 import Sidebar from "../user_route/User_Sidebar";
+import User_dashboard from "../common_component/User_dashboard";
+import ProfileBasicInfo from "../common_component/ProfileBasicInfo";
+import ChangePassword from "../common_component/ChangePassword";
 
 const SettingsLayout = () => {
-  const [active, setActive] = useState("profile");
+  const [active, setActive] = useState("documents");
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="h-full bg-gray-100 w-full">
       {/* Header */}
       <Header />
 
@@ -17,23 +20,18 @@ const SettingsLayout = () => {
 
         {/* Content */}
         <main className="flex-1 p-6">
-          {active === "profile" && (
-            <div className="bg-white rounded-lg shadow p-6">
-              <h2 className="text-lg font-semibold mb-4">User Profile</h2>
-              <p className="text-gray-600">
-                User profile details will be shown here.
-              </p>
-            </div>
-          )}
 
           {active === "documents" && (
-            <div className="bg-white rounded-lg shadow p-6">
-              <h2 className="text-lg font-semibold mb-4">Documents</h2>
-              <p className="text-gray-600">
-                Uploaded documents will be shown here.
-              </p>
-            </div>
+            <User_dashboard />
           )}
+
+
+          {active === "profile" && (
+            <ProfileBasicInfo />
+          )}
+
+          {active === "change-password" && <ChangePassword />}
+
         </main>
       </div>
     </div>

@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import logo from "../assets/venture_logo.svg";
 import { registerUserThunk, resetAuthState } from "../store/slice/authSlice";
 
-
-
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { loading, error, success } = useSelector((state) => state.auth);
+  const { loading, error, isAuthenticated } = useSelector(
+    (state) => state.auth
+  );
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -43,29 +43,29 @@ const Register = () => {
         phone: formData.phone,
         address: formData.address,
         password: formData.password,
-        role: "user", // ✅ DEFAULT ROLE
+        password_confirmation: formData.password_confirmation, // ✅ REQUIRED
       })
     );
   };
 
   /* =========================
-     HANDLE SUCCESS / ERROR
+     HANDLE AUTH STATE
   ========================= */
   useEffect(() => {
-    if (success) {
+    if (isAuthenticated) {
       dispatch(resetAuthState());
-      navigate("/login");
+      navigate("/login"); 
     }
-  }, [success, dispatch, navigate]);
+  }, [isAuthenticated, dispatch, navigate]);
 
   useEffect(() => {
     if (error) alert(error);
   }, [error]);
 
   return (
+    
     <div className="min-h-screen w-full flex items-center justify-center bg-[#f5f7fb]">
       <div className="w-full max-w-lg bg-white rounded-2xl shadow-lg p-8">
-
         {/* Logo */}
         <div className="flex justify-center mb-8">
           <img src={logo} alt="Venture" className="h-11" />
@@ -76,8 +76,8 @@ const Register = () => {
           onSubmit={handleSubmit}
           className="grid grid-cols-1 md:grid-cols-2 gap-5"
         >
-          {["name", "email", "phone", "address"].map((field, idx) => (
-            <div key={idx}>
+          {["name", "email", "phone", "address"].map((field) => (
+            <div key={field}>
               <label className="block text-sm font-medium text-gray-600 mb-1 capitalize">
                 {field}
               </label>
@@ -88,7 +88,7 @@ const Register = () => {
                 onChange={handleChange}
                 required={field !== "address"}
                 className="w-full h-11 px-4 rounded-lg border border-gray-300 text-sm
-                focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                focus:ring-2 focus:ring-indigo-500 outline-none"
               />
             </div>
           ))}
