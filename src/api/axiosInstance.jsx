@@ -7,7 +7,6 @@ export const axiosInstance = axios.create({
   baseURL: BASE_URL,
   timeout: TIMEOUT,
   headers: {
-    "Content-Type": "application/json",
     Accept: "application/json",
   },
 });
@@ -45,7 +44,6 @@ axiosInstance.interceptors.response.use(
       localStorage.removeItem("tokenId");
       localStorage.removeItem("user");
 
-      // ✅ SAFE redirect
       if (window.location.pathname !== "/login") {
         window.location.replace("/login");
       }

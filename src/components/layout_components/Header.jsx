@@ -46,7 +46,7 @@ const navigate = useNavigate();
               className={({ isActive }) =>
                 isActive
                   ? "text-[#87BC25] font-semibold whitespace-nowrap"
-                  : "text-gray-800 hover:text-green-700 whitespace-nowrap"
+                  : "text-gray-800 hover:text-green-700 whitespace-nowrap cursor-pointer"
               }
             >
               Raise Capital
@@ -57,7 +57,7 @@ const navigate = useNavigate();
               className={({ isActive }) =>
                 isActive
                   ? "text-[#87BC25] font-semibold whitespace-nowrap"
-                  : "text-gray-800 hover:text-green-700 whitespace-nowrap"
+                  : "text-gray-800 hover:text-green-700 whitespace-nowrap cursor-pointer"
               }
             >
               Become A Member
@@ -105,11 +105,11 @@ const navigate = useNavigate();
             </NavLink>
             <button
               onClick={() => navigate("/login")}
-              className="bg-[#87BC25] text-white px-2 xl:px-4 py-2 rounded-md hover:bg-lime-700 transition whitespace-nowrap"
+              className="bg-[#87BC25] text-white px-2 xl:px-4 py-2 rounded-md hover:bg-lime-700 transition whitespace-nowrap cursor-pointer"
             >
               Member Login
             </button>
-            <button className="bg-[#87BC25] text-white px-2 xl:px-4 py-2 rounded-md hover:bg-lime-600 transition whitespace-nowrap">
+            <button className="bg-[#87BC25] text-white px-2 xl:px-4 py-2 rounded-md hover:bg-lime-600 transition whitespace-nowrap cursor-pointer">
               Investment Marketplace
             </button>
           </div>
@@ -179,10 +179,10 @@ const navigate = useNavigate();
               Resources
             </NavLink>
 
-            <button className="w-full bg-lime-600 text-white px-4 py-2 rounded-md hover:bg-lime-700">
+            <button className="w-full bg-lime-600 text-white px-4 py-2 rounded-md hover:bg-lime-700 cursor-pointer">
               Member Login
             </button>
-            <button className="w-full bg-lime-500 text-white px-4 py-2 rounded-md hover:bg-lime-600">
+            <button className="w-full bg-lime-500 text-white px-4 py-2 rounded-md hover:bg-lime-600 cursor-pointer">
               Investment Marketplace
             </button>
           </div>

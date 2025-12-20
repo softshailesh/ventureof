@@ -146,7 +146,7 @@ const Register = () => {
             type="submit"
             disabled={loading}
             className="col-span-full mt-4 h-12 rounded-lg bg-indigo-600 text-white
-            font-semibold hover:bg-indigo-700 transition disabled:opacity-60"
+            font-semibold hover:bg-indigo-700 transition disabled:opacity-60 cursor-pointer"
           >
             {loading ? "Creating Account..." : "Create Account"}
           </button>
