@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Bell, LogOut } from "lucide-react";
+import { Bell, LogOut, Menu } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/slice/authSlice";
 import { useNavigate } from "react-router-dom";
 import LogoutModal from "../common_component/LogoutModal";
 
+// 👉 replace with your logo
+import logo from "../../assets/venture_logo.svg";
 
 const Header = () => {
   const user = useSelector((state) => state.auth.user);
@@ -15,14 +17,18 @@ const Header = () => {
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
   const dropdownRef = useRef(null);
 
-  // ✅ IMAGE URL
+  /* =========================
+     PROFILE IMAGE
+  ========================= */
   const profileImageUrl = user?.profile_image_url
     ? user.profile_image_url.startsWith("http")
       ? user.profile_image_url
       : `${import.meta.env.VITE_BASE_URL}${user.profile_image_url}`
     : "https://i.pravatar.cc/100";
 
-  // Close dropdown on outside click
+  /* =========================
+     CLOSE DROPDOWN ON OUTSIDE
+  ========================= */
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -41,13 +47,24 @@ const Header = () => {
 
   return (
     <>
-      <header className="w-full h-14 bg-white border-b flex items-center justify-between px-6">
-        <h1 className="text-lg font-semibold text-gray-800">
-          Settings
-        </h1>
+      <header className="w-full h-14 bg-white shadow-md flex items-center justify-between px-4 sm:px-6">
+        
+        {/* LEFT : LOGO */}
+        <div className="flex items-center gap-3">
+          <img
+            src={logo}
+            alt="Logo"
+            className="h-8 w-auto object-contain"
+          />
+        </div>
 
-        <div className="relative flex items-center gap-4" ref={dropdownRef}>
-          <Bell className="w-5 h-5 text-gray-600 cursor-pointer" />
+        {/* RIGHT : ACTIONS */}
+        <div
+          className="relative flex items-center gap-3 sm:gap-4"
+          ref={dropdownRef}
+        >
+          {/* Notification */}
+          <Bell className="w-5 h-5 text-gray-600 cursor-pointer hidden sm:block" />
 
           {/* Avatar */}
           <img
@@ -60,9 +77,9 @@ const Header = () => {
             }}
           />
 
-          {/* 🔽 Logout Dropdown */}
+          {/* DROPDOWN */}
           {open && (
-            <div className="absolute right-0 top-12 w-40 bg-white border rounded-xl shadow-lg py-2 z-40">
+            <div className="absolute right-0 top-11 w-40 bg-white border rounded-xl shadow-lg py-2 z-40">
               <button
                 onClick={() => {
                   setOpen(false);
@@ -78,7 +95,7 @@ const Header = () => {
         </div>
       </header>
 
-      {/* 🔥 Logout Confirmation Popup */}
+      {/* LOGOUT CONFIRMATION MODAL */}
       {showLogoutPopup && (
         <LogoutModal
           onConfirm={handleLogoutConfirm}

@@ -8,11 +8,11 @@ import { store } from "./store/storeconfiguration.js";
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </StrictMode>
+
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+
   </Provider>
 
 );
