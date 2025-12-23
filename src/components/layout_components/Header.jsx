@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { FiChevronDown, FiMenu, FiX } from "react-icons/fi";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router";
 import logo from "../../assets/venture_logo.svg";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-const navigate = useNavigate();
+  const navigate = useNavigate();
+
   return (
     <nav className="bg-[#ECF3F2] border-b border-gray-200 sticky top-0 z-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between items-center gap-7 h-[70px] lg:h-[112px]">
+
           {/* Logo */}
           <div className="flex items-center w-[200px] h-[56px]">
             <Link to="/">
@@ -18,97 +20,61 @@ const navigate = useNavigate();
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center  space-x-5 xl:space-x-8">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-[#87BC25] font-semibold whitespace-nowrap"
-                  : "text-gray-800 hover:text-green-700 whitespace-nowrap"
-              }
-            >
+          <div className="hidden lg:flex items-center space-x-5 xl:space-x-8">
+
+            <Link to="/" className="text-gray-800 hover:text-green-700 whitespace-nowrap">
               About Us
-            </NavLink>
+            </Link>
 
-            <NavLink
-              to="/investVenture"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-[#87BC25] font-semibold whitespace-nowrap"
-                  : "text-gray-800 hover:text-green-700 whitespace-nowrap"
-              }
-            >
+            <Link to="/investVenture" className="text-gray-800 hover:text-green-700 whitespace-nowrap">
               Invest
-            </NavLink>
-
-            <NavLink
-              to="/capital-venture"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-[#87BC25] font-semibold whitespace-nowrap"
-                  : "text-gray-800 hover:text-green-700 whitespace-nowrap cursor-pointer"
-              }
-            >
+            </Link>
+            {/* <span onClick={() => navigate("/investVenture")}>Invest</span> */}
+           {/* <NavLink to="/investVenture" className="text-gray-800 hover:text-green-700 whitespace-nowrap">  Invest</NavLink> */}
+            <Link to="/capital-venture" className="text-gray-800 hover:text-green-700 whitespace-nowrap">
               Raise Capital
-            </NavLink>
+            </Link>
 
-            <NavLink
-              to="/have-membership"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-[#87BC25] font-semibold whitespace-nowrap"
-                  : "text-gray-800 hover:text-green-700 whitespace-nowrap cursor-pointer"
-              }
-            >
+            <Link to="/have-membership" className="text-gray-800 hover:text-green-700 whitespace-nowrap">
               Become A Member
-            </NavLink>
+            </Link>
 
             {/* Dropdown */}
             <div className="relative group">
               <button className="flex items-center text-gray-800 hover:text-green-700 whitespace-nowrap">
                 Resources <FiChevronDown className="ml-1" />
               </button>
+
               <div className="absolute hidden group-hover:block bg-white shadow-lg rounded-md w-40">
                 <div className="mt-2">
-                  <NavLink
-                    to="/events"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#FBB91D]"
-                  >
-                    Event
-                  </NavLink>
-                  <NavLink
+                 
+                  <Link
                     to="/podcast"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#FBB91D]"
                   >
                     Podcast
-                  </NavLink>
-                  <NavLink
+                  </Link>
+                  <Link
                     to="/blog"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#FBB91D]"
                   >
                     Blog
-                  </NavLink>
-
+                  </Link>
                 </div>
               </div>
             </div>
 
-            <NavLink
-              to="/contact-us"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-[#87BC25] font-semibold whitespace-nowrap"
-                  : "text-gray-800 hover:text-green-700 whitespace-nowrap"
-              }
-            >
+            <Link to="/contact-us" className="text-gray-800 hover:text-green-700 whitespace-nowrap">
               ContactUs
-            </NavLink>
+            </Link>
+
             <button
               onClick={() => navigate("/login")}
               className="bg-[#87BC25] text-white px-2 xl:px-4 py-2 rounded-md hover:bg-lime-700 transition whitespace-nowrap cursor-pointer"
             >
               Member Login
             </button>
+
             <button className="bg-[#87BC25] text-white px-2 xl:px-4 py-2 rounded-md hover:bg-lime-600 transition whitespace-nowrap cursor-pointer">
               Investment Marketplace
             </button>
@@ -128,60 +94,31 @@ const navigate = useNavigate();
         {/* Mobile Menu */}
         {menuOpen && (
           <div className="lg:hidden mt-1 space-y-2 pb-4 absolute z-[100] bg-[#ECF3F2] w-full left-0 px-4">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive
-                  ? "block text-[#87BC25] font-semibold"
-                  : "block text-green-600 font-medium"
-              }
-            >
+
+            <Link to="/" className="block text-gray-800">
               About Us
-            </NavLink>
-            <NavLink
-              to="/invest"
-              className={({ isActive }) =>
-                isActive
-                  ? "block text-[#87BC25] font-semibold"
-                  : "block text-gray-800"
-              }
-            >
+            </Link>
+
+            <Link to="/invest" className="block text-gray-800">
               Invest
-            </NavLink>
-            <NavLink
-              to="/raise-capital"
-              className={({ isActive }) =>
-                isActive
-                  ? "block text-[#87BC25] font-semibold"
-                  : "block text-gray-800"
-              }
-            >
+            </Link>
+
+            <Link to="/raise-capital" className="block text-gray-800">
               Raise Capital
-            </NavLink>
-            <NavLink
-              to="/become-member"
-              className={({ isActive }) =>
-                isActive
-                  ? "block text-[#87BC25] font-semibold"
-                  : "block text-gray-800"
-              }
-            >
+            </Link>
+
+            <Link to="/become-member" className="block text-gray-800">
               Become A Member
-            </NavLink>
-            <NavLink
-              to="/resources"
-              className={({ isActive }) =>
-                isActive
-                  ? "block text-[#87BC25] font-semibold"
-                  : "block text-gray-800"
-              }
-            >
+            </Link>
+
+            <Link to="/resources" className="block text-gray-800">
               Resources
-            </NavLink>
+            </Link>
 
             <button className="w-full bg-lime-600 text-white px-4 py-2 rounded-md hover:bg-lime-700 cursor-pointer">
               Member Login
             </button>
+
             <button className="w-full bg-lime-500 text-white px-4 py-2 rounded-md hover:bg-lime-600 cursor-pointer">
               Investment Marketplace
             </button>

@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
 import { Eye, EyeOff } from "lucide-react";
+import logo from "../assets/venture_logo.svg";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import logo from "../../assets/venture_logo.svg";
-import { loginUserThunk, resetAuthState } from "../../store/slice/authSlice";
+import { loginUserThunk, resetAuthState } from '../store/slice/authSlice';
 
 
 
-const Login = () => {
-  const dispatch = useDispatch();
+const AdminLogin = () => {
+      const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { loading, error, isAuthenticated } = useSelector(
@@ -35,16 +35,15 @@ const Login = () => {
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(resetAuthState());
-      navigate("/dashboard"); // ✅ change if needed
+      navigate("/admin/dashboard"); // ✅ change if needed
     }
   }, [isAuthenticated, dispatch, navigate]);
 
   useEffect(() => {
     if (error) alert(error);
   }, [error]);
-
   return (
-    <div className="w-full flex items-center justify-center  mt-10 mb-10  ">
+    <div className=" w-full flex items-center justify-center  mt-10 mb-10">
       <div className="w-full max-w-md bg-white rounded-xl shadow-lg px-8 py-10">
 
         {/* Logo */}
@@ -103,16 +102,10 @@ const Login = () => {
           </button>
         </form>
 
-        {/* Register */}
-        <p className="text-center text-sm text-gray-600 mt-6">
-          Don’t have an account?{" "}
-          <Link to="/register" className="text-indigo-500 hover:underline">
-            Create New Account
-          </Link>
-        </p>
+       
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default AdminLogin
