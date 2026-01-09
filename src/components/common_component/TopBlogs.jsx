@@ -29,7 +29,7 @@ const fadeUp = {
 const TopBlogs = () => {
   return (
     <section className="w-full bg-[#eaf3f2] py-14">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="mx-auto px-6">
 
         {/* HEADING */}
         <motion.h2

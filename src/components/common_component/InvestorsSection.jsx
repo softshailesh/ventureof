@@ -1,118 +1,76 @@
 import React from "react";
-import { motion } from "framer-motion";
+import img1 from "../../assets/invest1.webp";
 
-const investors = [
-  {
-    name: "Lakhan Sharma",
-    location: "Delhi, India",
-    range: "₹ 1,00,000 – ₹ 5,00,000",
-    role: "I’m an Investor",
-    expertise: "Business And Investment",
-    image: "https://i.pravatar.cc/150?img=32",
-  },
-  {
-    name: "Karan Sharma",
-    location: "Delhi, India",
-    range: "₹ 1,00,000 – ₹ 5,00,000",
-    role: "I’m an Investor",
-    expertise: "Business And Investment",
-    image: "https://i.pravatar.cc/150?img=12",
-  },
-  {
-    name: "Lakhan Sharma",
-    location: "Delhi, India",
-    range: "₹ 1,00,000 – ₹ 5,00,000",
-    role: "I’m an Investor",
-    expertise: "Business And Investment",
-    image: "https://i.pravatar.cc/150?img=45",
-  },
-];
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.95 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      delay: i * 0.15,
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  }),
-};
-
-const InvestorsSection = () => {
+const InvestorSection = () => {
   return (
-    <section className="w-full bg-[#F1F7F5] py-16 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-semibold text-green-900 leading-snug">
-            Join our Growing Community of Entrepreneurs <br /> and Investors
-          </h2>
+    <section className="w-full bg-[#F1F7F5]  py-10 md:py-16 lg:py-20 px-4">
+      <div className="container  mx-auto text-center">
+        {/* Small Heading */}
+        {/* <p className="text-xs md:text-sm tracking-widest text-gray-700 mb-2 md:mb-3">
+          ANGEL INVESTORS NETWORK
+        </p> */}
 
-          <p className="text-gray-600 mt-4 text-sm md:text-base max-w-2xl mx-auto">
-            We help investors and entrepreneurs build lasting and profitable
-            relationships to build better businesses and brighter futures.
-          </p>
+        {/* Main Heading */}
+        <h2 className="text-[22px] sm:text-[28px] md:text-[36px] lg:text-[40px] font-semibold text-green-900 leading-snug md:leading-tight mb-4 md:mb-6">
+          How It Works
+        </h2>
 
-          {/* Yellow Line */}
-          <div className="w-20 h-[3px] bg-yellow-500 mt-4 mx-auto rounded-full"></div>
+        {/* Description Lines */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 ">
+          <div style={{textAlign:"left",margin:"auto"}}>
+            <div>
+              <strong>1. Join as an Investor</strong>
+              <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed md:leading-relaxed mb-3 md:mb-4">
+                Complete onboarding and compliance requirements
+              </p>
+            </div>
+
+            <div>
+              <strong>2. Review Opportunities</strong>
+              <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed md:leading-relaxed mb-3 md:mb-4">
+                Access curated startup investment opportunities and detailed
+                investor materials.
+              </p>
+            </div>
+            <div>
+              <strong>3. Invest</strong>
+              <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed md:leading-relaxed mb-3 md:mb-4">
+                Choose individual deals or portfolio-based investment
+                structures.
+              </p>
+            </div>
+            <div>
+              <strong>4. Track Performance</strong>
+              <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed md:leading-relaxed mb-3 md:mb-4">
+                Receive regular updates, performance reports, and milestone
+                tracking.
+              </p>
+            </div>
+            <div>
+              <strong>5. Exit & Returns</strong>
+              <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed md:leading-relaxed mb-3 md:mb-4">
+                Participate in liquidity events such as acquisitions, secondary
+                sales, or IPOs.
+              </p>
+            </div>
+          </div>
+          <div className="">
+            <img
+                             src={img1}
+                            alt="Investors meeting"
+                            className="w-full h-auto rounded-md shadow-md"
+                            style={{opacity:"1 !important"}}
+                          />
+          </div>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {investors.map((inv, index) => (
-            <motion.div
-              key={index}
-              custom={index}
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-              whileHover={{
-                scale: 1.03,
-                y: -8,
-                boxShadow:
-                  "0 10px 25px rgba(0,0,0,0.12)",
-                transition: { duration: 0.25 },
-              }}
-              className="bg-white rounded-xl shadow-md p-6 cursor-pointer"
-            >
-              {/* Profile */}
-              <div className="flex items-center space-x-4 mb-4">
-                <img
-                  src={inv.image}
-                  alt="Investor"
-                  className="w-14 h-14 rounded-full object-cover"
-                />
-                <div>
-                  <h3 className="font-semibold text-gray-800">{inv.name}</h3>
-                  <p className="text-sm text-gray-600 flex items-center gap-1">
-                    📍 {inv.location}
-                  </p>
-                </div>
-              </div>
-
-              {/* Details */}
-              <div className="space-y-2 mb-4">
-                <p className="font-semibold text-gray-700">Investment Range</p>
-                <p className="text-gray-800">{inv.range}</p>
-
-                <p className="font-semibold text-gray-700">Area Of Expertise</p>
-                <p className="text-gray-800">{inv.expertise}</p>
-              </div>
-
-              {/* Button */}
-              <button className="mt-3 bg-lime-600 text-white px-4 py-2 rounded-md hover:bg-lime-700 transition w-fit">
-                More Details
-              </button>
-            </motion.div>
-          ))}
-        </div>
+        {/* Button */}
+        {/* <button className="bg-green-600 text-white text-sm sm:text-base px-5 py-2.5 sm:px-6 sm:py-3 rounded-md hover:bg-green-700 transition-all duration-200">
+          Generate Double Digit Return With AIN
+        </button> */}
       </div>
     </section>
   );
 };
 
-export default InvestorsSection;
+export default InvestorSection;

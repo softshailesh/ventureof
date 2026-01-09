@@ -26,7 +26,7 @@ const ProtectLegacy = () => {
 
       {/* Content */}
       <motion.div
-        className="relative max-w-4xl mx-auto px-4 text-center"
+        className="relative mx-auto px-4 text-center"
         initial="hidden"
         animate="visible"
         variants={{

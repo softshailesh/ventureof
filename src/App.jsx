@@ -22,46 +22,54 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminLayout from "./components/AdminLayout/Layout";
 import Dashboard from "./components/Dashboard";
 import ContactQuery from "./components/ContactQuery";
+import ScrollToTop from "./components/common_component/ScrollToTop";
+import ContactView from "./pages/ContactView";
 
 function App() {
   return (
-    <Routes>
+    <>
 
-      {/* 🌐 PUBLIC ROUTES */}
-      <Route element={<PublicRoutes />}>
-        <Route path="/" element={<Aboutus />} />
-        <Route path="/investVenture" element={<InvestVenture />} />
-        <Route path="/capital-venture" element={<CapitalVenture />} />
-        <Route path="/have-membership" element={<BeMember />} />
-        <Route path="/podcast" element={<PodcastVenture />} />
-        <Route path="/blog" element={<BlogVenture />} />
-        <Route path="/contact-us" element={<PartnershipForm />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Route>
+      <ScrollToTop />
+      <Routes>
 
-      {/* 🔐 ADMIN LOGIN */}
-      <Route path="/admin/login" element={<AdminLogin />} />
-
-      {/* 👤 USER ROUTES */}
-      <Route element={<PrivateRoute />}>
-        <Route element={<RoleRoute allowedRoles={["user"]} />}>
-          <Route path="/dashboard" element={<SettingsLayout />} />
+        {/* 🌐 PUBLIC ROUTES */}
+        <Route element={<PublicRoutes />}>
+          <Route path="/" element={<Aboutus />} />
+          <Route path="/invest" element={<InvestVenture />} />
+          <Route path="/raise-capital" element={<CapitalVenture />} />
+          <Route path="/have-membership" element={<BeMember />} />
+          <Route path="/podcast" element={<PodcastVenture />} />
+          <Route path="/blog" element={<BlogVenture />} />
+          <Route path="/contact-us" element={<PartnershipForm />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Route>
-      </Route>
 
-      {/* 🔒 ADMIN ROUTES */}
-      <Route element={<PrivateRoute />}>
-        <Route element={<RoleRoute allowedRoles={["admin"]} />}>
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="contact-query" element={<ContactQuery />} />
+        {/* 🔐 ADMIN LOGIN */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+
+        {/* 👤 USER ROUTES */}
+        <Route element={<PrivateRoute />}>
+          <Route element={<RoleRoute allowedRoles={["user"]} />}>
+            <Route path="/dashboard" element={<SettingsLayout />} />
           </Route>
         </Route>
-      </Route>
 
-    </Routes>
+        {/* 🔒 ADMIN ROUTES */}
+        <Route element={<PrivateRoute />}>
+          <Route element={<RoleRoute allowedRoles={["admin"]} />}>
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="contact-query" element={<ContactQuery />} />
+                 <Route path="contacts/:id" element={<ContactView />} />
+            </Route>
+          </Route>
+        </Route>
+
+      </Routes>
+    </>
+
   );
 }
 

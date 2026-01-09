@@ -3,12 +3,14 @@ import HeroSection from "../components/common_component/HeroSection";
 import InvestorAbout from "../components/common_component/InvestorAbout";
 import BuildLegacySection from '../components/common_component/BuildLegacySection'
 import BlogSection from '../components/common_component/BlogSection'
+import AboutVenture from "../components/common_component/AboutVenture";
 
 
 const Aboutus = () => {
   return (
    <div className="w-full">
     <HeroSection />
+    <AboutVenture/>
     <InvestorAbout />
     <BuildLegacySection />
       <BlogSection />

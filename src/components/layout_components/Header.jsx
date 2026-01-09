@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { FiChevronDown, FiMenu, FiX } from "react-icons/fi";
-import { Link, NavLink, useNavigate } from "react-router";
-import logo from "../../assets/venture_logo.svg";
+import { Link, useNavigate } from "react-router";
+import logo from "../../assets/venture-logo.jpg";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false); // Mobile dropdown
   const navigate = useNavigate();
 
   return (
-    <nav className="bg-[#ECF3F2] border-b border-gray-200 sticky top-0 z-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex justify-between items-center gap-7 h-[70px] lg:h-[112px]">
+    <nav className="bg-[#ECF3F2] border-b border-gray-200 sticky top-0 z-50">
+      <div className="container mx-auto relative">
+        <div className="flex items-center justify-between">
 
           {/* Logo */}
           <div className="flex items-center w-[200px] h-[56px]">
@@ -21,63 +22,26 @@ const Header = () => {
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-5 xl:space-x-8">
-
-            <Link to="/" className="text-gray-800 hover:text-green-700 whitespace-nowrap">
-              About Us
-            </Link>
-
-            <Link to="/investVenture" className="text-gray-800 hover:text-green-700 whitespace-nowrap">
+            <Link to="/invest" className="text-gray-800 hover:text-green-700 whitespace-nowrap">
               Invest
             </Link>
-            {/* <span onClick={() => navigate("/investVenture")}>Invest</span> */}
-           {/* <NavLink to="/investVenture" className="text-gray-800 hover:text-green-700 whitespace-nowrap">  Invest</NavLink> */}
-            <Link to="/capital-venture" className="text-gray-800 hover:text-green-700 whitespace-nowrap">
+            <Link to="/raise-capital" className="text-gray-800 hover:text-green-700 whitespace-nowrap">
               Raise Capital
             </Link>
-
-            <Link to="/have-membership" className="text-gray-800 hover:text-green-700 whitespace-nowrap">
+            {/* <Link to="/have-membership" className="text-gray-800 hover:text-green-700 whitespace-nowrap">
               Become A Member
-            </Link>
+            </Link> */}
 
-            {/* Dropdown */}
-            <div className="relative group">
-              <button className="flex items-center text-gray-800 hover:text-green-700 whitespace-nowrap">
-                Resources <FiChevronDown className="ml-1" />
-              </button>
-
-              <div className="absolute hidden group-hover:block bg-white shadow-lg rounded-md w-40">
-                <div className="mt-2">
-                 
-                  <Link
-                    to="/podcast"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#FBB91D]"
-                  >
-                    Podcast
-                  </Link>
-                  <Link
-                    to="/blog"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#FBB91D]"
-                  >
-                    Blog
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <Link to="/contact-us" className="text-gray-800 hover:text-green-700 whitespace-nowrap">
-              ContactUs
-            </Link>
-
+            {/* Desktop Dropdown */}
+            
             <button
-              onClick={() => navigate("/login")}
+              onClick={() => navigate("/contact-us")}
               className="bg-[#87BC25] text-white px-2 xl:px-4 py-2 rounded-md hover:bg-lime-700 transition whitespace-nowrap cursor-pointer"
             >
-              Member Login
+              Contact Us
             </button>
 
-            <button className="bg-[#87BC25] text-white px-2 xl:px-4 py-2 rounded-md hover:bg-lime-600 transition whitespace-nowrap cursor-pointer">
-              Investment Marketplace
-            </button>
+          
           </div>
 
           {/* Mobile Menu Button */}
@@ -93,35 +57,44 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="lg:hidden mt-1 space-y-2 pb-4 absolute z-[100] bg-[#ECF3F2] w-full left-0 px-4">
+          <div className="lg:hidden mt-1 space-y-2 pb-4 absolute z-[100] bg-[#ECF3F2] w-full left-0 px-4 shadow-md rounded-b-md">
 
-            <Link to="/" className="block text-gray-800">
-              About Us
-            </Link>
-
-            <Link to="/invest" className="block text-gray-800">
+            <Link
+              to="/invest"
+              className="block text-gray-800 px-4 py-2 rounded hover:bg-green-100"
+              onClick={() => setMenuOpen(false)}
+            >
               Invest
             </Link>
 
-            <Link to="/raise-capital" className="block text-gray-800">
+            <Link
+              to="/raise-capital"
+              className="block text-gray-800 px-4 py-2 rounded hover:bg-green-100"
+              onClick={() => setMenuOpen(false)}
+            >
               Raise Capital
             </Link>
 
-            <Link to="/become-member" className="block text-gray-800">
+            {/* <Link
+              to="/have-membership"
+              className="block text-gray-800 px-4 py-2 rounded hover:bg-green-100"
+              onClick={() => setMenuOpen(false)}
+            >
               Become A Member
-            </Link>
+            </Link> */}
 
-            <Link to="/resources" className="block text-gray-800">
-              Resources
-            </Link>
+         
 
-            <button className="w-full bg-lime-600 text-white px-4 py-2 rounded-md hover:bg-lime-700 cursor-pointer">
-              Member Login
+        
+
+            <button
+              onClick={() => { navigate("/contact-us"); setMenuOpen(false); }}
+              className="w-full bg-lime-600 text-white px-4 py-2 rounded-md hover:bg-lime-700 cursor-pointer"
+            >
+               Contact Us
             </button>
 
-            <button className="w-full bg-lime-500 text-white px-4 py-2 rounded-md hover:bg-lime-600 cursor-pointer">
-              Investment Marketplace
-            </button>
+           
           </div>
         )}
       </div>

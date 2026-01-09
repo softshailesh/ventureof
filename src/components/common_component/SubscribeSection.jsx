@@ -8,7 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 const SubscribeSection = () => {
   return (
     <section className="w-full bg-[#eaf3f2] py-14">
-      <div className="max-w-6xl mx-auto text-center px-6">
+      <div className=" mx-auto text-center px-6">
 
         {/* HEADING */}
         <h2 className="text-3xl font-semibold text-[#0e3b32] mb-8">

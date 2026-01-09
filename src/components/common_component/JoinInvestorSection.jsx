@@ -4,7 +4,7 @@ import img from "../../assets/network_member.webp"; // replace with your image
 const JoinInvestorSection = () => {
   return (
     <section className="bg-[#EAF6F2] py-16 px-4 md:px-12 lg:px-20">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mx-auto">
 
         {/* LEFT IMAGE */}
         <div className="flex justify-center">

@@ -39,8 +39,8 @@ const CapitalHeroSection = () => {
           text-[24px] sm:text-[32px] md:text-[42px] lg:text-[50px] 
           leading-[110%] text-center max-w-[850px]"
         >
-          Are You Looking For Capital <br className="hidden sm:block" /> 
-          For Your Business?
+          Raise Capital 
+
         </motion.h1>
 
         {/* Underline decorative dotted line */}
@@ -57,9 +57,9 @@ const CapitalHeroSection = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
           className="font-inter font-light text-xs sm:text-sm md:text-base 
-          tracking-wide opacity-90 text-center max-w-[600px]"
+          tracking-wide opacity-90 text-center max-w-[600px] mb-8"
         >
-          Perpetuating Free Enterprise, Capitalism, & Angel Investing since 1997!
+          Perpetuating Free Enterprise, Capitalism !
         </motion.p>
 
         
