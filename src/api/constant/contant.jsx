@@ -15,3 +15,5 @@ export const CONTACT_FORM_URL = "/api/contact";
 // Admin
 export const ADMIN_DASHBOARD_URL = "/api/admin/dashboard";
 export const ADMIN_CONTACTS_URL = "/api/admin/contacts";
+export const DELETE_CONTACT_URL = (id) => `/api/admin/contacts/${id}`;
+export const VIEW_CONTACT_URL = (id) => `/api/admin/contacts/${id}`;
