@@ -98,7 +98,7 @@ const ChangePassword = () => {
 
   return (
     <div className="min-h-screen px-4 py-6">
-      <div className="max-w-7xl mx-auto bg-white border rounded-xl p-6">
+      <div className="mx-auto bg-white border rounded-xl p-6">
         <h3 className="text-lg font-semibold mb-6">
           Change Password
         </h3>

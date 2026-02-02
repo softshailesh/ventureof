@@ -47,7 +47,7 @@ const LatestNews = () => {
 
   return (
     <section className="w-full py-16 bg-[#eff5f3]">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="mx-auto px-6">
 
         {/* Heading */}
         <motion.h2

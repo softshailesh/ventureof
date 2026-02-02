@@ -20,7 +20,7 @@ const fadeLeft = {
 
 const InvestmentOpportunities = () => {
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 lg:px-[170px] py-16">
+    <section className="w-full container mx-auto px-4 lg:px-[170px] py-16">
       {/* Heading */}
       <motion.div
         className="text-center mb-16"
@@ -30,10 +30,10 @@ const InvestmentOpportunities = () => {
         variants={fadeUp}
       >
         <h2 className="font-inter font-medium text-[24px] sm:text-[32px] md:text-[40px] lg:text-[48px] leading-[100%] tracking-normal text-center text-[#0D3D2E]">
-          Looking for Indian investment opportunities?
+          Our Investment Strategy
         </h2>
 
-        <p
+        {/* <p
           className="
     font-inter 
     font-medium 
@@ -45,15 +45,12 @@ const InvestmentOpportunities = () => {
     mt-2
   "
         >
-          Browse our latest startup pitches from around India and connect with
-          entrepreneurs
-        </p>
+         
+        </p> */}
 
         <div className="w-24 h-1 bg-yellow-500 mx-auto mt-4 rounded-full"></div>
       </motion.div>
-
-      {/* SECTION 1 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center lg:mb-20 md:mb-20 sm:mb-12">
         {/* Left Text */}
         <motion.div
           initial="hidden"
@@ -71,26 +68,17 @@ const InvestmentOpportunities = () => {
     text-[#0D3D2E]
   "
           >
-            Redefining The Future...
+            We focus on:
           </h3>
 
-          <p
-            className="
-    font-inter 
-    font-medium 
-    text-[14px] sm:text-[16px] 
-    leading-[26px] 
-    tracking-normal 
-    text-gray-700 
-    mt-4
-  "
-          >
-            The AIN Investment Marketplace stands as the premier destination for
-            discerning investors seeking the most promising deals, meticulously
-            curated for success. Here, opportunity meets foresight, connecting
-            you with investments that are not just poised for growth but are
-            primed to redefine the future of industry.
-          </p>
+          <ul className="list-disc text-gray-700 text-sm space-y-2 pl-5 mt-3">
+            <li>Early-stage and growth-stage startups </li>
+            <li>Scalable, technology-driven businesses </li>
+            <li>Large and expanding markets</li>
+            <li>Strong unit economics and growth potential</li>
+            <li>Investment medium to long term</li>
+            <li>Capital appreciation and strategic acquisitions</li>
+          </ul>
         </motion.div>
 
         {/* Right Image */}
@@ -110,8 +98,7 @@ const InvestmentOpportunities = () => {
       </div>
 
       {/* SECTION 2 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        {/* Left Image */}
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <motion.div
           className="w-full h-[320px] sm:h-[380px] order-2 md:order-1"
           initial="hidden"
@@ -126,7 +113,6 @@ const InvestmentOpportunities = () => {
           />
         </motion.div>
 
-        {/* Right Text */}
         <motion.div
           className="order-1 md:order-2"
           initial="hidden"
@@ -134,7 +120,7 @@ const InvestmentOpportunities = () => {
           viewport={{ once: true }}
           variants={fadeLeft}
         >
-          <h3
+          <p
             className="
     font-inter
     font-medium
@@ -144,8 +130,9 @@ const InvestmentOpportunities = () => {
     text-[#0D3D2E]
   "
           >
-            Our Angel Investor Team
-          </h3>
+            Return Focus:
+           
+          </p>
 
           <p
             className="
@@ -158,14 +145,10 @@ const InvestmentOpportunities = () => {
     mt-4
   "
           >
-            We have a team of experienced investors who can help you mitigate
-            your risk when making investment decisions. We also provide
-            comprehensive research and an online platform that allows you to
-            easily network and research investment opportunities, as well as
-            make direct investments.
+             Investment Horizon: Medium to long term
           </p>
         </motion.div>
-      </div>
+      </div> */}
     </section>
   );
 };

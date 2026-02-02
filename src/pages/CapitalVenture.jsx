@@ -3,6 +3,8 @@ import CapitalHeroSection from "../components/common_component/CapitalHeroSectio
 import CapitalInfoSection from "../components/common_component/CapitalInfoSection";
 import CapitalProcess from "../components/common_component/CapitalProcess";
 import CapitalTwoSection from "../components/common_component/CapitalTwoSection";
+import WhyRaisingCapital from "../components/common_component/WhyRaisingCapital";
+import CapitalRiskDisclosure from "../components/common_component/CapitalRiskDisclosure";
 
 
 const CapitalVenture = () => {
@@ -10,8 +12,10 @@ const CapitalVenture = () => {
     <div>
       <CapitalHeroSection />
       <CapitalInfoSection />
+      <WhyRaisingCapital/>
       <CapitalProcess />
       <CapitalTwoSection />
+      <CapitalRiskDisclosure/>
     </div>
   );
 };

@@ -39,7 +39,7 @@ const LatestBlogs = () => {
 
   return (
     <section className="w-full bg-[#798980] bg-opacity-50 py-16">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="mx-auto px-6">
 
         {/* Heading */}
         <h2 className="text-3xl md:text-4xl font-semibold text-center text-white mb-10">

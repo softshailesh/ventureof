@@ -59,7 +59,7 @@ const RecentBlogs = () => {
 
     return (
         <section className="w-full bg-[#eaf3f2] py-20 ">
-            <div className="max-w-7xl mx-auto px-6">
+            <div className="mx-auto px-6">
 
                 {/* Heading */}
                 <h2 className="text-3xl md:text-4xl font-semibold text-center text-[#0e3b32] mb-12">

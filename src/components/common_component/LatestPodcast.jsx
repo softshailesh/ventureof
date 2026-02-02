@@ -96,7 +96,7 @@ const LatestPodcast = () => {
 
     return (
         <section className="w-full bg-[#E7EBE9] py-14">
-            <div className="max-w-7xl mx-auto px-6">
+            <div className="mx-auto px-6">
 
                 {/* HEADING */}
                 <h2 className="text-3xl md:text-4xl font-semibold text-center text-[#0e3b32] mb-10">

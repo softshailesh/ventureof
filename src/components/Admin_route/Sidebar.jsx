@@ -3,7 +3,7 @@ import { LayoutDashboard, Mail } from "lucide-react";
 
 const Sidebar = () => {
   return (
-    <aside className="w-64 bg-white shadow-md  px-4 py-6">
+    <aside className="w-64 bg-white shadow-md roubd px-4 py-6">
       {/* Logo */}
       <div className="text-2xl font-bold text-orange-600 mb-8">
         SINGHTEK

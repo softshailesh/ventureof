@@ -61,7 +61,7 @@ const ProfileBasicInfo = () => {
   return (
     <>
         <div className="">
-      <div className="max-w-7xl mx-auto bg-white p-6 rounded-xl border">
+      <div className="mx-auto bg-white p-6 rounded-xl border">
 
         <h3 className="text-lg font-semibold mb-6">Basic Details</h3>
 
