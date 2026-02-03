@@ -24,12 +24,17 @@ import Dashboard from "./components/Dashboard";
 import ContactQuery from "./components/ContactQuery";
 import ScrollToTop from "./components/common_component/ScrollToTop";
 import ContactView from "./pages/ContactView";
+import MyProfile from "./components/MyProfile";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Users from "./components/Users";
 
 function App() {
   return (
     <>
 
       <ScrollToTop />
+       <ToastContainer position="top-right" autoClose={3000} />
       <Routes>
 
         {/* 🌐 PUBLIC ROUTES */}
@@ -62,7 +67,9 @@ function App() {
               <Route index element={<Dashboard />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="contact-query" element={<ContactQuery />} />
-                 <Route path="contacts/:id" element={<ContactView />} />
+              <Route path="contacts/:id" element={<ContactView />} />
+              <Route path="my-profile" element={<MyProfile />} />
+               {/* <Route path="user" element={<Users />} /> */}
             </Route>
           </Route>
         </Route>

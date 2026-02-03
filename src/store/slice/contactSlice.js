@@ -25,15 +25,18 @@ export const submitContactThunk = createAsyncThunk(
 );
 
 /* =========================
-   GET ADMIN CONTACTS
+   GET ADMIN CONTACTS (WITH SEARCH)
 ========================= */
 export const getAdminContactsThunk = createAsyncThunk(
   "contact/admin/list",
-  async (page = 1, { rejectWithValue }) => {
+  async ({ page = 1, search = "" }, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get(
-        `${ADMIN_CONTACTS_URL}?page=${page}`
+        `${ADMIN_CONTACTS_URL}?page=${page}&search=${search}`
       );
+
+      // assuming backend response:
+      // { data, current_page, last_page, total, per_page }
       return response.data.contacts;
     } catch (error) {
       return rejectWithValue(
@@ -137,6 +140,7 @@ const contactSlice = createSlice({
       })
       .addCase(getAdminContactsThunk.fulfilled, (state, action) => {
         state.listLoading = false;
+
         state.contacts = action.payload.data;
         state.pagination = {
           current_page: action.payload.current_page,

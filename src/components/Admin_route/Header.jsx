@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { Search, LogOut } from "lucide-react";
+import { Search, LogOut, User } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import LogoutModal from "../common_component/LogoutModal";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleLogoutConfirm = () => {
     console.log("Logged out");
@@ -34,9 +37,24 @@ const Header = () => {
             onClick={() => setOpen(!open)}
           />
 
-          {/* LOGOUT DROPDOWN */}
+          {/* DROPDOWN */}
           {open && (
-            <div className="absolute right-0 mt-3 w-40 bg-white border rounded-xl shadow-lg py-2 z-50">
+            <div className="absolute right-0 mt-3 w-44 bg-white border rounded-xl shadow-lg py-2 z-50">
+              {/* MY PROFILE */}
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  navigate("/admin/my-profile"); // route change
+                }}
+                className="w-full flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                <User size={16} />
+                My Profile
+              </button>
+
+              <div className="border-t my-1" />
+
+              {/* LOGOUT */}
               <button
                 onClick={() => {
                   setOpen(false);
