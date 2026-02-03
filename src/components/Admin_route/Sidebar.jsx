@@ -1,13 +1,17 @@
 import { NavLink } from "react-router-dom";
 import { LayoutDashboard, Mail, Users } from "lucide-react";
-
+import singhtekLogo from "../../assets/venture-logo.jpg";
 const Sidebar = () => {
   return (
     <aside className="w-64 bg-white shadow-md roubd px-4 py-6">
       {/* Logo */}
-      <div className="text-2xl font-bold text-orange-600 mb-8">
-        SINGHTEK
-      </div>
+    <div className="mb-8 flex justify-center">
+  <img
+    src={singhtekLogo}
+    alt="SINGHTEK"
+    className="h-12 w-auto"
+  />
+</div>
 
       {/* Menu */}
       <nav className="space-y-2">

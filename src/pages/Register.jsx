@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import logo from "../assets/venture_logo.svg";
+import logo from "../assets/venture-logo.jpg";
 import { registerUserThunk, resetAuthState } from "../store/slice/authSlice";
 
 const Register = () => {
