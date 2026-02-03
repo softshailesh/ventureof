@@ -33,7 +33,7 @@ const Sidebar = () => {
           Contact Enquiry
         </NavLink>
 
-        {/* <NavLink
+        <NavLink
           to="/admin/user"
           className={({ isActive }) =>
             `flex items-center gap-3 px-4 py-2 rounded-lg ${isActive ? "bg-indigo-100 text-indigo-600" : "text-gray-600"
@@ -42,7 +42,7 @@ const Sidebar = () => {
         >
           <Users size={18} />
           Users
-        </NavLink> */}
+        </NavLink>
 
       </nav>
     </aside>

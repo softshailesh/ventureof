@@ -69,7 +69,7 @@ function App() {
               <Route path="contact-query" element={<ContactQuery />} />
               <Route path="contacts/:id" element={<ContactView />} />
               <Route path="my-profile" element={<MyProfile />} />
-               {/* <Route path="user" element={<Users />} /> */}
+               <Route path="user" element={<Users />} />
             </Route>
           </Route>
         </Route>
