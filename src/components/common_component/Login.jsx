@@ -3,17 +3,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/venture-logo.jpg";
-import { loginUserThunk, resetAuthState } from "../../store/slice/authSlice";
-
-
+import {
+  loginUserThunk,
+  resetAuthState,
+} from "../../store/slice/authSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { loading, error, isAuthenticated } = useSelector(
-    (state) => state.auth
-  );
+  const {
+    loading,
+    error,
+    isAuthenticated,
+  } = useSelector((state) => state.auth);
 
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -30,33 +33,35 @@ const Login = () => {
   };
 
   /* =========================
-     HANDLE SUCCESS / ERROR
+     REDIRECT AFTER LOGIN
   ========================= */
   useEffect(() => {
     if (isAuthenticated) {
-      dispatch(resetAuthState());
       navigate("/dashboard"); // ✅ change if needed
+      dispatch(resetAuthState()); // clear error/loading AFTER redirect
     }
-  }, [isAuthenticated, dispatch, navigate]);
-
-  useEffect(() => {
-    if (error) alert(error);
-  }, [error]);
+  }, [isAuthenticated, navigate, dispatch]);
 
   return (
-    <div className="w-full flex items-center justify-center  mt-10 mb-10  ">
+    <div className="w-full flex items-center justify-center mt-10 mb-10">
       <div className="w-full max-w-md bg-white rounded-xl shadow-lg px-8 py-10">
-
         {/* Logo */}
         <div className="flex justify-center mb-8">
           <img src={logo} alt="Venture" className="h-12" />
         </div>
 
+        {/* GLOBAL ERROR */}
+        {error && (
+          <div className="mb-4 rounded-lg bg-red-100 text-red-700 px-4 py-2 text-sm">
+            {error}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit}>
           {/* Email */}
           <div className="mb-5">
             <label className="block text-sm font-medium text-gray-600 mb-1">
-              EMAIL
+              Email
             </label>
             <input
               type="email"
@@ -72,7 +77,7 @@ const Login = () => {
           {/* Password */}
           <div className="mb-4 relative">
             <label className="block text-sm font-medium text-gray-600 mb-1">
-              PASSWORD
+              Password
             </label>
             <input
               type={showPassword ? "text" : "password"}
@@ -97,7 +102,7 @@ const Login = () => {
             type="submit"
             disabled={loading}
             className="w-full bg-indigo-500 hover:bg-indigo-600 text-white
-            py-2.5 rounded-md font-medium transition disabled:opacity-60 cursor-pointer"
+            py-2.5 rounded-md font-medium transition disabled:opacity-60"
           >
             {loading ? "Signing in..." : "Sign in"}
           </button>

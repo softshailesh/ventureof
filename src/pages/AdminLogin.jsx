@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Eye, EyeOff } from "lucide-react";
-import logo from "../assets/venture_logo.svg";
+import logo from "../assets/venture-logo.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUserThunk, resetAuthState } from '../store/slice/authSlice';
@@ -28,7 +28,7 @@ const AdminLogin = () => {
     e.preventDefault();
     dispatch(loginUserThunk(formData));
   };
-
+  
   /* =========================
      HANDLE SUCCESS / ERROR
   ========================= */

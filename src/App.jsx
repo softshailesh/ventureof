@@ -48,10 +48,11 @@ function App() {
           <Route path="/contact-us" element={<PartnershipForm />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+           <Route path="/admin/login" element={<AdminLogin />} />
         </Route>
 
         {/* 🔐 ADMIN LOGIN */}
-        <Route path="/admin/login" element={<AdminLogin />} />
+       
 
         {/* 👤 USER ROUTES */}
         <Route element={<PrivateRoute />}>
