@@ -2,15 +2,6 @@ import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../api/axiosInstance";
 import { toast } from "react-toastify";
 
-const BASE_STORAGE_URL = "https://venturesyou.com/storage";
-
-/* ================= IMAGE PATH HELPER ================= */
-const getProfileImageUrl = (path) => {
-  if (!path) return "";
-  const cleanPath = path.replace(/\\/g, "");
-  return `${BASE_STORAGE_URL}/${cleanPath}`;
-};
-
 const MyProfile = () => {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -37,13 +28,14 @@ const MyProfile = () => {
       const admin = res.data?.admin;
 
       setForm({
-        name: admin?.name ?? "",
-        email: admin?.email ?? "",
-        phone: admin?.phone ?? "",
-        address: admin?.address ?? "",
+        name: admin?.name || "",
+        email: admin?.email || "",
+        phone: admin?.phone || "",
+        address: admin?.address || "",
       });
 
-      setPreview(getProfileImageUrl(admin?.profile_image));
+      // ✅ FIX: use backend-provided full image URL
+      setPreview(admin?.profile_image_url || "");
     } catch (error) {
       toast.error("Failed to load profile");
     } finally {
@@ -66,12 +58,8 @@ const MyProfile = () => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (preview?.startsWith("blob:")) {
-      URL.revokeObjectURL(preview);
-    }
-
     setProfileImage(file);
-    setPreview(URL.createObjectURL(file));
+    setPreview(URL.createObjectURL(file)); // instant preview
   };
 
   /* ================= UPDATE PROFILE ================= */
@@ -82,9 +70,9 @@ const MyProfile = () => {
       setSaving(true);
 
       const formData = new FormData();
-      Object.entries(form).forEach(([key, value]) =>
-        formData.append(key, value)
-      );
+      Object.entries(form).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
 
       if (profileImage) {
         formData.append("profile_image", profileImage);
@@ -97,8 +85,9 @@ const MyProfile = () => {
       );
 
       toast.success("Profile updated successfully");
+
       setProfileImage(null);
-      fetchProfile();
+      fetchProfile(); // refresh profile + image
     } catch (error) {
       toast.error("Profile update failed");
     } finally {
@@ -106,7 +95,7 @@ const MyProfile = () => {
     }
   };
 
-  /* ================= LOADING UI ================= */
+  /* ================= LOADING ================= */
   if (loading) {
     return (
       <div className="bg-white p-6 rounded-xl shadow animate-pulse">
@@ -120,17 +109,41 @@ const MyProfile = () => {
     );
   }
 
-  /* ================= MAIN UI ================= */
+  /* ================= UI ================= */
   return (
     <div className="bg-white p-6 rounded-xl shadow">
       <h2 className="text-xl font-semibold mb-6">My Profile</h2>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-       
+        {/* PROFILE IMAGE */}
+        <div className="flex items-center gap-6">
+          <div className="w-24 h-24 rounded-full border overflow-hidden bg-gray-100">
+            {preview ? (
+              <img
+                src={preview}
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                No Image
+              </div>
+            )}
+          </div>
+
+          <label className="cursor-pointer bg-gray-100 px-4 py-2 rounded-lg text-sm">
+            Change Photo
+            <input
+              type="file"
+              accept="image/*"
+              hidden
+              onChange={handleImageChange}
+            />
+          </label>
+        </div>
 
         {/* FORM GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {/* NAME */}
           <div>
             <label className="block text-sm font-medium mb-1">Name</label>
             <input
@@ -142,7 +155,6 @@ const MyProfile = () => {
             />
           </div>
 
-          {/* EMAIL */}
           <div>
             <label className="block text-sm font-medium mb-1">Email</label>
             <input
@@ -154,7 +166,6 @@ const MyProfile = () => {
             />
           </div>
 
-          {/* PHONE */}
           <div>
             <label className="block text-sm font-medium mb-1">Phone</label>
             <input
@@ -166,7 +177,6 @@ const MyProfile = () => {
             />
           </div>
 
-          {/* ADDRESS */}
           <div className="md:col-span-2">
             <label className="block text-sm font-medium mb-1">Address</label>
             <textarea
@@ -184,7 +194,7 @@ const MyProfile = () => {
           <button
             type="submit"
             disabled={saving}
-            className="bg-blue-600 text-white px-6 py-2 rounded-lg disabled:opacity-50 cursor-pointer"
+            className="bg-blue-600 text-white px-6 py-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {saving ? "Saving..." : "Save Changes"}
           </button>

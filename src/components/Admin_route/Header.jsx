@@ -1,13 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Search, LogOut, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+
 import LogoutModal from "../common_component/LogoutModal";
+import { axiosInstance } from "../../api/axiosInstance";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+  const [profileImageUrl, setProfileImageUrl] = useState("");
 
   const navigate = useNavigate();
+
+  /* ================= FETCH PROFILE IMAGE ================= */
+  const fetchProfileImage = async () => {
+    try {
+      const res = await axiosInstance.get(
+        "https://venturesyou.com/api/admin/profile"
+      );
+
+      setProfileImageUrl(res.data?.admin?.profile_image_url || "");
+    } catch (error) {
+      console.error("Failed to load profile image");
+    }
+  };
+
+  useEffect(() => {
+    fetchProfileImage();
+  }, []);
 
   const handleLogoutConfirm = () => {
     console.log("Logged out");
@@ -31,9 +51,12 @@ const Header = () => {
         {/* Profile */}
         <div className="relative">
           <img
-            src="https://i.pravatar.cc/40"
+            src={
+              profileImageUrl ||
+              "https://ui-avatars.com/api/?name=Admin&background=E5E7EB&color=374151"
+            }
             alt="profile"
-            className="w-10 h-10 rounded-full cursor-pointer"
+            className="w-10 h-10 rounded-full cursor-pointer object-cover border"
             onClick={() => setOpen(!open)}
           />
 
@@ -44,7 +67,7 @@ const Header = () => {
               <button
                 onClick={() => {
                   setOpen(false);
-                  navigate("/admin/my-profile"); // route change
+                  navigate("/admin/my-profile");
                 }}
                 className="w-full flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >

@@ -6,6 +6,7 @@ import {
   resetProfileState,
 } from "../../store/slice/profileSlice";
 import ChangePassword from "./ChangePassword";
+import { toast } from "react-toastify";
 
 const ProfileBasicInfo = () => {
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ const ProfileBasicInfo = () => {
 
   useEffect(() => {
     if (success) {
-      alert("Profile updated successfully");
+      toast.success("Profile updated successfully!");
       dispatch(resetProfileState());
     }
   }, [success, dispatch]);
@@ -75,6 +76,7 @@ const ProfileBasicInfo = () => {
             />
             <input
               type="file"
+              accept=".png,.jpg,.jpeg,.gif"
               name="profile_image"
               hidden
               onChange={handleChange}

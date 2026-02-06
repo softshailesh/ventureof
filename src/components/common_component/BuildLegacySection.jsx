@@ -17,7 +17,7 @@ const BuildLegacySection = () => {
 
           {/* <strong className="text-white">We Partner With Visionaries</strong> */}
 
-          <p className="text-white  leading-relaxed mb-4 max-w-md mt-3">
+          <p className="text-white  leading-relaxed mb-4 max-w-md mt-3 flex justify-between items-center">
             We partner with visionaries who are building ambitious startups and seeking more than just capital. From early-stage to growth funding, we bring a long-term partnership mindset focused on helping you scale sustainably. Beyond investment, we provide strategic mentorship, connect you with experienced investors and advisors, and stand by your side through future fundraising rounds—offering support, guidance, and insight at every stage of your journey.
 
           </p>
