@@ -114,7 +114,7 @@ const PartnershipForm = () => {
           </Field>
 
           <Field error={errors.last_name}>
-            <Input label="Last Name" name="last_name" value={formData.last_name} on Change={handleChange} />
+            <Input label="Last Name" name="last_name" value={formData.last_name} onChange={handleChange} />
           </Field>
 
           <Field error={errors.company_name}>

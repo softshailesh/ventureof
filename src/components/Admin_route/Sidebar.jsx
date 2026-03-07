@@ -5,13 +5,13 @@ const Sidebar = () => {
   return (
     <aside className="w-64 bg-white shadow-md roubd px-4 py-6">
       {/* Logo */}
-    <div className="mb-8 flex justify-center">
-  <img
-    src={singhtekLogo}
-    alt="SINGHTEK"
-    className="h-12 w-auto"
-  />
-</div>
+      <div className="mb-8 flex justify-center">
+        <img
+          src={singhtekLogo}
+          alt="SINGHTEK"
+          className="h-12 w-auto"
+        />
+      </div>
 
       {/* Menu */}
       <nav className="space-y-2">
@@ -48,6 +48,28 @@ const Sidebar = () => {
           Users
         </NavLink>
 
+        <NavLink
+          to="/admin/investors"
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-4 py-2 rounded-lg ${isActive ? "bg-indigo-100 text-indigo-600" : "text-gray-600"
+            }`
+          }
+        >
+          <Users size={18} />
+          Investors
+        </NavLink>
+
+
+        <NavLink
+          to="/admin/raisecapital"
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-4 py-2 rounded-lg ${isActive ? "bg-indigo-100 text-indigo-600" : "text-gray-600"
+            }`
+          }
+        >
+          <Users size={18} />
+          RaiseCapital
+        </NavLink>
       </nav>
     </aside>
   );

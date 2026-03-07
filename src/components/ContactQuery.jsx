@@ -21,7 +21,7 @@ const TableSkeleton = () => (
   <>
     {[...Array(6)].map((_, i) => (
       <tr key={i} className="animate-pulse">
-        {[...Array(8)].map((_, j) => (
+        {[...Array(9)].map((_, j) => (
           <td key={j} className="p-3 border">
             <div className="h-4 bg-gray-200 rounded"></div>
           </td>
@@ -105,6 +105,7 @@ const ContactQuery = () => {
                 <th className="p-3 border">Mobile</th>
                 <th className="p-3 border">Industry</th>
                 <th className="p-3 border">Objective</th>
+                <th className="p-3 border">Created At</th>
                 <th className="p-3 border text-center">Action</th>
               </tr>
             </thead>
@@ -149,6 +150,15 @@ const ContactQuery = () => {
                     </td>
                     <td className="p-3 border">{item.industry}</td>
                     <td className="p-3 border">{item.key_objective}</td>
+                    <td className="p-3 border">
+                      {new Date(item.created_at).toLocaleString("en-IN", {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </td>
                     <td className="p-3 border text-center">
                       <div className="flex justify-center gap-3">
                         <button
