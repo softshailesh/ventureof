@@ -28,6 +28,8 @@ import MyProfile from "./components/MyProfile";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Users from "./components/Users";
+import RaiseCapital from "./components/user_route/RaiseCapital";
+import Investors from "./components/user_route/Investors";
 
 function App() {
   return (
@@ -71,6 +73,8 @@ function App() {
               <Route path="contacts/:id" element={<ContactView />} />
               <Route path="my-profile" element={<MyProfile />} />
                <Route path="user" element={<Users />} />
+                <Route path="investors" element={<Investors />} />
+                 <Route path="raisecapital" element={<RaiseCapital />} />
             </Route>
           </Route>
         </Route>
