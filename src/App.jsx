@@ -30,6 +30,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Users from "./components/Users";
 import RaiseCapital from "./components/user_route/RaiseCapital";
 import Investors from "./components/user_route/Investors";
+import InvestForm from "./pages/InvestForm";
+import CapitalForm from "./pages/CapitalForm";
 
 function App() {
   return (
@@ -43,6 +45,8 @@ function App() {
         <Route element={<PublicRoutes />}>
           <Route path="/" element={<Aboutus />} />
           <Route path="/invest" element={<InvestVenture />} />
+           <Route path="/investor" element={<InvestForm />} />
+             <Route path="/startup" element={<CapitalForm />} />
           <Route path="/raise-capital" element={<CapitalVenture />} />
           <Route path="/have-membership" element={<BeMember />} />
           <Route path="/podcast" element={<PodcastVenture />} />

@@ -7,7 +7,7 @@ export default function CardsSection() {
     {
       title: "Our Approach",
       img: [approach],
-      color: "bg-[#87BC25]",
+      color: "bg-[#42b87c]",
       points: [
         "Identify promising founders and ideas",
         "Evaluate market potential, traction, and execution capability",
@@ -20,13 +20,13 @@ export default function CardsSection() {
       title: "Our Vision",
       img: [targeting]  ,
       desc :"",
-      color: "bg-[#87BC25]",
+      color: "bg-[#42b87c]",
       points: ["To build a strong ecosystem where innovative startups thrive and investors participate in meaningful, long-term value creation."],
     },
   ];
 
   return (
-    <div className="w-full flex flex-wrap justify-center gap-12 py-16 bg-[#EEF1F5] blogsection" >
+    <div className="w-full flex flex-wrap justify-center gap-12 py-16 bg-white blogsection" >
       {cards.map((c, i) => (
         <div
           key={i}
@@ -68,3 +68,4 @@ export default function CardsSection() {
     </div>
   );
 }
+

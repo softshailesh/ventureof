@@ -5,7 +5,7 @@ import logo from "../../assets/venture-logo.jpg";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#EEF1F5] py-10">
+    <footer className="footer-section bg-[#EEF1F5] py-10">
       <div className="max-w-2xl mx-auto px-4 text-center">
         {/* Logo */}
         <div className="flex justify-center m-auto items-center mb-4 w-[200px] h-[56px]">
@@ -24,8 +24,8 @@ const Footer = () => {
 
        <div className="bg-white rounded-2xl py-6 shadow-sm mb-6 ">
          {/* Navigation */}
-        <div className="flex justify-center gap-8 text-sm font-medium text-gray-700 mb-5">
-          <a href="#" className="hover:text-orange-500">
+        <div className="flex flex-col md:flex-row-reverse justify-center md:gap-8 gap-4 text-sm font-medium text-gray-700 mb-5">
+          <a href="#" className="hover:text-orange-500 ">
             <Link to="/invest">Invest</Link>
           </a>
           <a href="#" className="hover:text-orange-500">
@@ -33,6 +33,12 @@ const Footer = () => {
           </a>
           <a href="#" className="hover:text-orange-500">
             <Link to="/contact-us">Contact Us</Link>
+          </a>
+          <a href="#" className="hover:text-orange-500">
+            <Link to="/investor">Investor</Link>
+          </a>
+          <a href="#" className="hover:text-orange-500">
+            <Link to="/startup">Startup Funding</Link>
           </a>
         </div>
 
@@ -45,7 +51,7 @@ const Footer = () => {
             <FaInstagram size={14} />
           </a> */}
           <a
-            className="w-9 h-9 flex items-center justify-center rounded-full bg-green-700 text-white hover:opacity-90"
+            className="w-9 h-9 flex items-center justify-center rounded-full bg-[#42b87c] text-white hover:opacity-90"
             href="https://www.linkedin.com/company/venturesyou"
             target="_blank"
             rel="noopener noreferrer"

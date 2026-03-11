@@ -58,7 +58,7 @@ const HeroSection = () => {
 
           <button
               onClick={() => { navigate("/contact-us"); setMenuOpen(false); }}
-              className="bg-[#87BC25] cursor-pointer duration-300 font-medium hover:bg-[#76a81f] hover:shadow-xl mt-6 px-6 py-3 rounded-md shadow-lg"
+              className="bg-[#42b87c] cursor-pointer duration-300 font-medium hover:bg-[#76a81f] hover:shadow-xl mt-6 px-6 py-3 rounded-md shadow-lg"
             >
                Contact Us
             </button>

@@ -21,3 +21,4 @@ const CapitalVenture = () => {
 };
 
 export default CapitalVenture;
+  

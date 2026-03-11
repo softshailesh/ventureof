@@ -3,7 +3,7 @@ import React from 'react'
 const CapitalRiskDisclosure = () => {
   return (
     <section className=" container pt-6 pb-10 px-4">
-     <div className="mt-6 bg-[#87BC25] opacity-80 rounded-[100px] py-10 px-6 sm:px-12 md:px-20 text-white text-center shadow-inner">
+     <div className="mt-6 bg-[#42b87c] opacity-80 rounded-[100px] py-10 px-6 sm:px-12 md:px-20 text-white text-center shadow-inner">
           <h2 className="text-lg sm:text-xl md:text-4xl font-semibold mb-4 leading-snug">
             Risk Disclosure
           </h2>

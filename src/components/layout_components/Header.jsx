@@ -9,10 +9,9 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="bg-[#ECF3F2] border-b border-gray-200 sticky top-0 z-50">
+    <nav className="header-section bg-[#ECF3F2] border-b border-gray-200 sticky top-0 z-50">
       <div className="container mx-auto relative">
         <div className="flex items-center justify-between">
-
           {/* Logo */}
           <div className="flex items-center w-[200px] h-[56px]">
             <Link to="/">
@@ -22,10 +21,16 @@ const Header = () => {
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-5 xl:space-x-8">
-            <Link to="/invest" className="text-gray-800 hover:text-green-700 whitespace-nowrap">
+            <Link
+              to="/invest"
+              className="text-gray-800 hover:text-green-700 whitespace-nowrap"
+            >
               Invest
             </Link>
-            <Link to="/raise-capital" className="text-gray-800 hover:text-green-700 whitespace-nowrap">
+            <Link
+              to="/raise-capital"
+              className="text-gray-800 hover:text-green-700 whitespace-nowrap"
+            >
               Raise Capital
             </Link>
             {/* <Link to="/have-membership" className="text-gray-800 hover:text-green-700 whitespace-nowrap">
@@ -33,15 +38,27 @@ const Header = () => {
             </Link> */}
 
             {/* Desktop Dropdown */}
-            
-            <button
-              onClick={() => navigate("/contact-us")}
-              className="bg-[#87BC25] text-white px-2 xl:px-4 py-2 rounded-md hover:bg-lime-700 transition whitespace-nowrap cursor-pointer"
+
+            <Link
+              to="/contact-us"
+              className="text-gray-800 hover:text-green-700 whitespace-nowrap"
+              // onClick={() => navigate("/contact-us")}
+              // className="bg-[#42b87c] text-white px-2 xl:px-4 py-2 rounded-md hover:bg-lime-700 transition whitespace-nowrap cursor-pointer"
             >
               Contact Us
+            </Link>
+            <button
+              onClick={() => navigate("/investor")}
+              className="bg-[#42b87c] text-white px-2 xl:px-4 py-2 rounded-md hover:bg-lime-700 transition whitespace-nowrap cursor-pointer"
+            >
+              Investor
             </button>
-
-          
+            <button
+              onClick={() => navigate("/startup")}
+              className="bg-[#42b87c] text-white px-2 xl:px-4 py-2 rounded-md hover:bg-lime-700 transition whitespace-nowrap cursor-pointer"
+            >
+              Startup Funding
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -58,10 +75,9 @@ const Header = () => {
         {/* Mobile Menu */}
         {menuOpen && (
           <div className="lg:hidden mt-1 space-y-2 pb-4 absolute z-[100] bg-[#ECF3F2] w-full left-0 px-4 shadow-md rounded-b-md">
-
             <Link
               to="/invest"
-              className="block text-gray-800 px-4 py-2 rounded hover:bg-green-100"
+              className="block text-gray-800 lg:px-4 py-2 rounded hover:bg-green-100"
               onClick={() => setMenuOpen(false)}
             >
               Invest
@@ -69,7 +85,7 @@ const Header = () => {
 
             <Link
               to="/raise-capital"
-              className="block text-gray-800 px-4 py-2 rounded hover:bg-green-100"
+              className="block text-gray-800 lg:px-4 py-2 rounded hover:bg-green-100"
               onClick={() => setMenuOpen(false)}
             >
               Raise Capital
@@ -83,18 +99,37 @@ const Header = () => {
               Become A Member
             </Link> */}
 
-         
-
-        
+            <Link
+              to="/contact-us"
+              className="block text-gray-800 lg:px-4 py-2 rounded hover:bg-green-100"
+              onClick={() => setMenuOpen(false)}
+            >
+              Contact Us
+            </Link>
 
             <button
-              onClick={() => { navigate("/contact-us"); setMenuOpen(false); }}
-              className="w-full bg-lime-600 text-white px-4 py-2 rounded-md hover:bg-lime-700 cursor-pointer"
+              onClick={() => navigate("/investor")}
+              className="block bg-lime-600 text-white px-4 py-2 rounded-md hover:bg-lime-700 cursor-pointer"
             >
-               Contact Us
+              Investor
+            </button>
+            <button
+              onClick={() => navigate("/startup")}
+                // className="block text-gray-800 px-4 py-2 rounded hover:bg-green-100"
+              className="block bg-lime-600 text-white px-4 py-2 rounded-md hover:bg-lime-700 cursor-pointer"
+            >
+              Startup Funding
             </button>
 
-           
+            {/* <button
+              onClick={() => {
+                navigate("/contact-us");
+                setMenuOpen(false);
+              }}
+              className="w-full bg-lime-600 text-white px-4 py-2 rounded-md hover:bg-lime-700 cursor-pointer"
+            >
+              Contact Us
+            </button> */}
           </div>
         )}
       </div>
