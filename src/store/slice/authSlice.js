@@ -13,16 +13,10 @@ export const registerUserThunk = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const res = await axiosInstance.post(REGISTER_USER_URL, payload);
-
-      if (res.data?.token) {
-        localStorage.setItem("tokenId", res.data.token);
-        localStorage.setItem("user", JSON.stringify(res.data.user));
-      }
-
       return res.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data?.message || "Registration failed"
+        error.response?.data || { message: "Registration failed" }
       );
     }
   }
@@ -61,6 +55,7 @@ const authSlice = createSlice({
   initialState: {
     loading: false,
     error: null,
+    fieldErrors: null, // 👈 IMPORTANT
     success: false,
     isAuthenticated: !!localStorage.getItem("tokenId"),
     user: storedUser ? JSON.parse(storedUser) : null,
@@ -69,6 +64,7 @@ const authSlice = createSlice({
     resetAuthState: (state) => {
       state.loading = false;
       state.error = null;
+      state.fieldErrors = null;
       state.success = false;
     },
 
@@ -79,10 +75,6 @@ const authSlice = createSlice({
       state.user = null;
     },
 
-    /* =========================
-       🔥 IMPORTANT
-       Used when profile updates
-    ========================= */
     updateUser: (state, action) => {
       state.user = action.payload;
       localStorage.setItem("user", JSON.stringify(action.payload));
@@ -94,16 +86,24 @@ const authSlice = createSlice({
       .addCase(registerUserThunk.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.fieldErrors = null;
       })
-      .addCase(registerUserThunk.fulfilled, (state, action) => {
+      .addCase(registerUserThunk.fulfilled, (state) => {
         state.loading = false;
         state.success = true;
-        state.isAuthenticated = true;
-        state.user = action.payload.user;
+        state.isAuthenticated = false;
+        state.user = null;
       })
       .addCase(registerUserThunk.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+
+        if (action.payload?.errors) {
+          state.fieldErrors = action.payload.errors;
+          state.error = null;
+        } else {
+          state.error = action.payload?.message || "Registration failed";
+          state.fieldErrors = null;
+        }
       })
 
       /* LOGIN */
@@ -126,7 +126,7 @@ const authSlice = createSlice({
 export const {
   resetAuthState,
   logout,
-  updateUser, // ✅ EXPORT THIS
+  updateUser,
 } = authSlice.actions;
 
 export default authSlice.reducer;

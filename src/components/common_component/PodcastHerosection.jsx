@@ -13,7 +13,7 @@ const PodcastHerosection = () => {
       <div className="bg-black/60 w-full h-full">
         <div
           className="
-            max-w-7xl mx-auto px-6 lg:px-12 py-20 
+            mx-auto px-6 lg:px-12 py-20 
             grid grid-cols-1 lg:grid-cols-2 items-center
             text-center lg:text-left      /* MOBILE CENTER, DESKTOP LEFT */
           "

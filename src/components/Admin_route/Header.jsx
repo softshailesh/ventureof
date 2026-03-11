@@ -1,27 +1,106 @@
-import { Search } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Search, LogOut, User } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
+import LogoutModal from "../common_component/LogoutModal";
+import { axiosInstance } from "../../api/axiosInstance";
 
 const Header = () => {
-  return (
-    <header className="bg-white border-b px-6 py-4 flex justify-between items-center">
-      {/* Search */}
-      <div className="relative w-1/3">
-        <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
-        <input
-          type="text"
-          placeholder="Search..."
-          className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none"
-        />
-      </div>
+  const [open, setOpen] = useState(false);
+  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+  const [profileImageUrl, setProfileImageUrl] = useState("");
 
-      {/* Profile */}
-      <div className="flex items-center gap-3">
-        <img
-          src="https://i.pravatar.cc/40"
-          alt="profile"
-          className="w-10 h-10 rounded-full"
+  const navigate = useNavigate();
+
+  /* ================= FETCH PROFILE IMAGE ================= */
+  const fetchProfileImage = async () => {
+    try {
+      const res = await axiosInstance.get(
+        "https://venturesyou.com/api/admin/profile"
+      );
+
+      setProfileImageUrl(res.data?.admin?.profile_image_url || "");
+    } catch (error) {
+      console.error("Failed to load profile image");
+    }
+  };
+
+  useEffect(() => {
+    fetchProfileImage();
+  }, []);
+
+  const handleLogoutConfirm = () => {
+    console.log("Logged out");
+    setShowLogoutPopup(false);
+    // yahan redux / api logout laga sakte ho
+  };
+
+  return (
+    <>
+      <header className="bg-white shadow-sm px-6 py-4 flex justify-between items-center relative">
+        {/* Search */}
+        <div className="relative w-1/3">
+          <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
+          <input
+            type="text"
+            placeholder="Search..."
+            className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none"
+          />
+        </div>
+
+        {/* Profile */}
+        <div className="relative">
+          <img
+            src={
+              profileImageUrl ||
+              "https://ui-avatars.com/api/?name=Admin&background=E5E7EB&color=374151"
+            }
+            alt="profile"
+            className="w-10 h-10 rounded-full cursor-pointer object-cover border"
+            onClick={() => setOpen(!open)}
+          />
+
+          {/* DROPDOWN */}
+          {open && (
+            <div className="absolute right-0 mt-3 w-44 bg-white border rounded-xl shadow-lg py-2 z-50">
+              {/* MY PROFILE */}
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  navigate("/admin/my-profile");
+                }}
+                className="w-full flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                <User size={16} />
+                My Profile
+              </button>
+
+              <div className="border-t my-1" />
+
+              {/* LOGOUT */}
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  setShowLogoutPopup(true);
+                }}
+                className="w-full flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+              >
+                <LogOut size={16} />
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
+      </header>
+
+      {/* LOGOUT MODAL */}
+      {showLogoutPopup && (
+        <LogoutModal
+          onConfirm={handleLogoutConfirm}
+          onClose={() => setShowLogoutPopup(false)}
         />
-      </div>
-    </header>
+      )}
+    </>
   );
 };
 

@@ -1,14 +1,24 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Users,
-  FileText,
-  UserCheck,
-  UserX,
-} from "lucide-react";
+import { Users, FileText, UserCheck, UserX } from "lucide-react";
 
 import StatCard from "./common_component/StatCard";
 import { fetchAdminDashboardThunk } from "../store/slice/adminDashboardSlice";
+
+/* ================= SKELETON CARD ================= */
+const StatCardSkeleton = () => {
+  return (
+    <div className="bg-white rounded-xl shadow p-6 animate-pulse">
+      <div className="flex justify-between items-center">
+        <div className="space-y-3">
+          <div className="h-4 w-28 bg-gray-200 rounded"></div>
+          <div className="h-6 w-20 bg-gray-200 rounded"></div>
+        </div>
+        <div className="h-10 w-10 bg-gray-200 rounded-full"></div>
+      </div>
+    </div>
+  );
+};
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -20,34 +30,46 @@ const Dashboard = () => {
     dispatch(fetchAdminDashboardThunk());
   }, [dispatch]);
 
-  if (loading) return <p>Loading dashboard...</p>;
-  if (error) return <p className="text-red-500">{error}</p>;
+  if (error) {
+    return <p className="text-red-500">{error}</p>;
+  }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <StatCard
-        title="Total Users"
-        amount={stats?.total_users}
-        icon={<Users className="text-blue-500" />}
-      />
+      {loading ? (
+        <>
+          <StatCardSkeleton />
+          <StatCardSkeleton />
+          <StatCardSkeleton />
+          <StatCardSkeleton />
+        </>
+      ) : (
+        <>
+          <StatCard
+            title="Total Users"
+            amount={stats?.total_users}
+            icon={<Users className="text-blue-500" />}
+          />
 
-      <StatCard
-        title="Active Users"
-        amount={stats?.active_users}
-        icon={<UserCheck className="text-green-500" />}
-      />
+          <StatCard
+            title="Active Users"
+            amount={stats?.active_users}
+            icon={<UserCheck className="text-green-500" />}
+          />
 
-      <StatCard
-        title="Inactive Users"
-        amount={stats?.inactive_users}
-        icon={<UserX className="text-red-500" />}
-      />
+          <StatCard
+            title="Inactive Users"
+            amount={stats?.inactive_users}
+            icon={<UserX className="text-red-500" />}
+          />
 
-      <StatCard
-        title="Total Documents"
-        amount={stats?.total_documents}
-        icon={<FileText className="text-indigo-500" />}
-      />
+          <StatCard
+            title="Total Documents"
+            amount={stats?.total_documents}
+            icon={<FileText className="text-indigo-500" />}
+          />
+        </>
+      )}
     </div>
   );
 };

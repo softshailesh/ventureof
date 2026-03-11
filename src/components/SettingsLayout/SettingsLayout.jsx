@@ -26,7 +26,7 @@ const SettingsLayout = () => {
           )}
 
 
-          {active === "profile" && (
+          {active === "profile" && (    
             <ProfileBasicInfo />
           )}
 

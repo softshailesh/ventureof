@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from "framer-motion";
+import {useNavigate } from "react-router";
 import invest_hero_bg from "../../assets/captial_hero_bg.webp";
 
 const CapitalHeroSection = () => {
+  const navigate = useNavigate();
   return (
     <div
       className="w-full h-[350px] sm:h-[420px] md:h-[480px] lg:h-[564px] 
@@ -39,8 +41,8 @@ const CapitalHeroSection = () => {
           text-[24px] sm:text-[32px] md:text-[42px] lg:text-[50px] 
           leading-[110%] text-center max-w-[850px]"
         >
-          Are You Looking For Capital <br className="hidden sm:block" /> 
-          For Your Business?
+          Raise Capital 
+
         </motion.h1>
 
         {/* Underline decorative dotted line */}
@@ -57,12 +59,25 @@ const CapitalHeroSection = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
           className="font-inter font-light text-xs sm:text-sm md:text-base 
-          tracking-wide opacity-90 text-center max-w-[600px]"
+          tracking-wide opacity-90 text-center max-w-[600px] mb-8"
         >
-          Perpetuating Free Enterprise, Capitalism, & Angel Investing since 1997!
+          Perpetuating Free Enterprise, Capitalism !
         </motion.p>
 
-        
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="font-inter font-light text-xs sm:text-sm md:text-base 
+          tracking-wide opacity-90 text-center max-w-[600px] mb-8"
+        >
+         <button
+              onClick={() => navigate("/startup")}
+              className="bg-[#42b87c] text-white px-2 xl:px-4 py-2 rounded-md hover:bg-lime-700 transition whitespace-nowrap cursor-pointer"
+            >
+              Startup Funding
+            </button>
+        </motion.p>
 
       </div>
 

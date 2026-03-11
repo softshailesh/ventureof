@@ -9,7 +9,7 @@ const BlogVenture = () => {
     return (
         <div>
             <BlogHeroSection />
-            <TopBlogs />
+            <TopB  logs />
             <LatestBlogs />
             <LatestNews />
             <RecentPost />

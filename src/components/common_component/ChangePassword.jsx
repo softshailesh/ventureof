@@ -5,6 +5,7 @@ import {
   changePasswordThunk,
   resetChangePasswordState,
 } from "../../store/slice/changePasswordSlice";
+import { toast } from "react-toastify";
 
 const ChangePassword = () => {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const ChangePassword = () => {
 
   useEffect(() => {
     if (success) {
-      alert("Password changed successfully");
+     toast.success("Password changed successfully!");
       setFormData({
         current_password: "",
         new_password: "",
@@ -98,7 +99,7 @@ const ChangePassword = () => {
 
   return (
     <div className="min-h-screen px-4 py-6">
-      <div className="max-w-7xl mx-auto bg-white border rounded-xl p-6">
+      <div className="mx-auto bg-white border rounded-xl p-6">
         <h3 className="text-lg font-semibold mb-6">
           Change Password
         </h3>

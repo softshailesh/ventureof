@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import logo from "../assets/venture_logo.svg";
-import { registerUserThunk, resetAuthState } from "../store/slice/authSlice";
+import logo from "../assets/venture-logo.jpg";
+import {
+  registerUserThunk,
+  resetAuthState,
+} from "../store/slice/authSlice";
 
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { loading, error, isAuthenticated } = useSelector(
+  const { loading, error, fieldErrors, success } = useSelector(
     (state) => state.auth
   );
 
@@ -36,64 +39,113 @@ const Register = () => {
       return;
     }
 
-    dispatch(
-      registerUserThunk({
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        address: formData.address,
-        password: formData.password,
-        password_confirmation: formData.password_confirmation, // ✅ REQUIRED
-      })
-    );
+    dispatch(registerUserThunk(formData));
   };
 
   /* =========================
-     HANDLE AUTH STATE
+     REDIRECT AFTER SUCCESS
   ========================= */
   useEffect(() => {
-    if (isAuthenticated) {
+    if (success) {
       dispatch(resetAuthState());
-      navigate("/login"); 
+      navigate("/login");
     }
-  }, [isAuthenticated, dispatch, navigate]);
-
-  useEffect(() => {
-    if (error) alert(error);
-  }, [error]);
+  }, [success, dispatch, navigate]);
 
   return (
-    
-    <div className="min-h-screen w-full flex items-center justify-center bg-[#f5f7fb]">
+    <div className=" w-full flex items-center justify-center  mb-9 mt-5">
       <div className="w-full max-w-lg bg-white rounded-2xl shadow-lg p-8">
         {/* Logo */}
         <div className="flex justify-center mb-8">
           <img src={logo} alt="Venture" className="h-11" />
         </div>
 
+        {/* GLOBAL ERROR */}
+        {error && (
+          <div className="mb-4 rounded-lg bg-red-100 text-red-700 px-4 py-2 text-sm">
+            {error}
+          </div>
+        )}
+
         {/* Form */}
         <form
           onSubmit={handleSubmit}
           className="grid grid-cols-1 md:grid-cols-2 gap-5"
         >
-          {["name", "email", "phone", "address"].map((field) => (
-            <div key={field}>
-              <label className="block text-sm font-medium text-gray-600 mb-1 capitalize">
-                {field}
-              </label>
-              <input
-                type="text"
-                name={field}
-                value={formData[field]}
-                onChange={handleChange}
-                required={field !== "address"}
-                className="w-full h-11 px-4 rounded-lg border border-gray-300 text-sm
-                focus:ring-2 focus:ring-indigo-500 outline-none"
-              />
-            </div>
-          ))}
+          {/* NAME */}
+          <div>
+            <label className="block text-sm font-medium text-gray-600 mb-1">
+              Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full h-11 px-4 rounded-lg border border-gray-300 text-sm
+              focus:ring-2 focus:ring-indigo-500 outline-none"
+            />
+          </div>
 
-          {/* Password */}
+          {/* EMAIL */}
+          <div>
+            <label className="block text-sm font-medium text-gray-600 mb-1">
+              Email
+            </label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className={`w-full h-11 px-4 rounded-lg border text-sm outline-none
+                ${
+                  fieldErrors?.email
+                    ? "border-red-500 focus:ring-red-500"
+                    : "border-gray-300 focus:ring-indigo-500"
+                }
+              `}
+            />
+            {fieldErrors?.email && (
+              <p className="mt-1 text-xs text-red-600">
+                {fieldErrors.email[0]}
+              </p>
+            )}
+          </div>
+
+          {/* PHONE */}
+          <div>
+            <label className="block text-sm font-medium text-gray-600 mb-1">
+              Phone
+            </label>
+            <input
+              type="text"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+              className="w-full h-11 px-4 rounded-lg border border-gray-300 text-sm
+              focus:ring-2 focus:ring-indigo-500 outline-none"
+            />
+          </div>
+
+          {/* ADDRESS */}
+          <div>
+            <label className="block text-sm font-medium text-gray-600 mb-1">
+              Address
+            </label>
+            <input
+              type="text"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+              className="w-full h-11 px-4 rounded-lg border border-gray-300 text-sm
+              focus:ring-2 focus:ring-indigo-500 outline-none"
+            />
+          </div>
+
+          {/* PASSWORD */}
           <div className="relative">
             <label className="block text-sm font-medium text-gray-600 mb-1">
               Password
@@ -104,8 +156,13 @@ const Register = () => {
               value={formData.password}
               onChange={handleChange}
               required
-              className="w-full h-11 px-4 pr-12 rounded-lg border border-gray-300 text-sm
-              focus:ring-2 focus:ring-indigo-500 outline-none"
+              className={`w-full h-11 px-4 pr-12 rounded-lg border text-sm outline-none
+                ${
+                  fieldErrors?.password
+                    ? "border-red-500 focus:ring-red-500"
+                    : "border-gray-300 focus:ring-indigo-500"
+                }
+              `}
             />
             <button
               type="button"
@@ -114,9 +171,14 @@ const Register = () => {
             >
               {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
+            {fieldErrors?.password && (
+              <p className="mt-1 text-xs text-red-600">
+                {fieldErrors.password[0]}
+              </p>
+            )}
           </div>
 
-          {/* Confirm Password */}
+          {/* CONFIRM PASSWORD */}
           <div className="relative">
             <label className="block text-sm font-medium text-gray-600 mb-1">
               Confirm Password
@@ -137,16 +199,20 @@ const Register = () => {
               }
               className="absolute right-4 top-9 text-gray-400"
             >
-              {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              {showConfirmPassword ? (
+                <EyeOff size={18} />
+              ) : (
+                <Eye size={18} />
+              )}
             </button>
           </div>
 
-          {/* Submit */}
+          {/* SUBMIT */}
           <button
             type="submit"
             disabled={loading}
             className="col-span-full mt-4 h-12 rounded-lg bg-indigo-600 text-white
-            font-semibold hover:bg-indigo-700 transition disabled:opacity-60 cursor-pointer"
+            font-semibold hover:bg-indigo-700 transition disabled:opacity-60"
           >
             {loading ? "Creating Account..." : "Create Account"}
           </button>

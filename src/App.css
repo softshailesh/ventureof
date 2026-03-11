@@ -1,3 +1,60 @@
 a.active {
     color:#87BC25
+}   
+.number {
+  font-size: 36px;
+  font-weight: 700;
+  color: #144b3f;   
+}
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Small tablets (≥576px) */
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+/* Tablets (≥768px) */
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* Laptops (≥992px) */
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+/* Desktops (≥1200px) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/* Large screens (≥1400px) */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+
+.blogsection{
+  padding-top:8%;
+  padding-bottom:5%;
 }

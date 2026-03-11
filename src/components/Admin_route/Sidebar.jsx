@@ -1,12 +1,16 @@
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, Mail } from "lucide-react";
-
+import { LayoutDashboard, Mail, Users } from "lucide-react";
+import singhtekLogo from "../../assets/venture-logo.jpg";
 const Sidebar = () => {
   return (
-    <aside className="w-64 bg-white border-r px-4 py-6">
+    <aside className="w-64 bg-white shadow-md roubd px-4 py-6">
       {/* Logo */}
-      <div className="text-2xl font-bold text-orange-600 mb-8">
-        SINGHTEK
+      <div className="mb-8 flex justify-center">
+        <img
+          src={singhtekLogo}
+          alt="SINGHTEK"
+          className="h-12 w-auto"
+        />
       </div>
 
       {/* Menu */}
@@ -14,8 +18,7 @@ const Sidebar = () => {
         <NavLink
           to="/admin/dashboard"
           className={({ isActive }) =>
-            `flex items-center gap-3 px-4 py-2 rounded-lg ${
-              isActive ? "bg-indigo-100 text-indigo-600" : "text-gray-600"
+            `flex items-center gap-3 px-4 py-2 rounded-lg ${isActive ? "bg-indigo-100 text-indigo-600" : "text-gray-600"
             }`
           }
         >
@@ -26,13 +29,46 @@ const Sidebar = () => {
         <NavLink
           to="/admin/contact-query"
           className={({ isActive }) =>
-            `flex items-center gap-3 px-4 py-2 rounded-lg ${
-              isActive ? "bg-indigo-100 text-indigo-600" : "text-gray-600"
+            `flex items-center gap-3 px-4 py-2 rounded-lg ${isActive ? "bg-indigo-100 text-indigo-600" : "text-gray-600"
             }`
           }
         >
           <Mail size={18} />
-          Contact Query
+          Contact Enquiry
+        </NavLink>
+
+        <NavLink
+          to="/admin/user"
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-4 py-2 rounded-lg ${isActive ? "bg-indigo-100 text-indigo-600" : "text-gray-600"
+            }`
+          }
+        >
+          <Users size={18} />
+          Users
+        </NavLink>
+
+        <NavLink
+          to="/admin/investors"
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-4 py-2 rounded-lg ${isActive ? "bg-indigo-100 text-indigo-600" : "text-gray-600"
+            }`
+          }
+        >
+          <Users size={18} />
+          Investors
+        </NavLink>
+
+
+        <NavLink
+          to="/admin/raisecapital"
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-4 py-2 rounded-lg ${isActive ? "bg-indigo-100 text-indigo-600" : "text-gray-600"
+            }`
+          }
+        >
+          <Users size={18} />
+          RaiseCapital
         </NavLink>
       </nav>
     </aside>

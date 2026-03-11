@@ -1,7 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { axiosInstance } from "../../api/axiosInstance";
-import { ADMIN_CONTACTS_URL, CONTACT_FORM_URL } from "../../api/constant/contant";
-
+import {
+  ADMIN_CONTACTS_URL,
+  CONTACT_FORM_URL,
+  DELETE_CONTACT_URL,
+  VIEW_CONTACT_URL,
+} from "../../api/constant/contant";
 
 /* =========================
    SUBMIT CONTACT FORM
@@ -21,19 +25,56 @@ export const submitContactThunk = createAsyncThunk(
 );
 
 /* =========================
-   GET ADMIN CONTACTS
+   GET ADMIN CONTACTS (WITH SEARCH)
 ========================= */
 export const getAdminContactsThunk = createAsyncThunk(
   "contact/admin/list",
-  async (page = 1, { rejectWithValue }) => {
+  async ({ page = 1, search = "" }, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get(
-        `${ADMIN_CONTACTS_URL}?page=${page}`
+        `${ADMIN_CONTACTS_URL}?page=${page}&search=${search}`
       );
-      return response.data.contacts; // 🔥 pagination object
+
+      // assuming backend response:
+      // { data, current_page, last_page, total, per_page }
+      return response.data.contacts;
     } catch (error) {
       return rejectWithValue(
         error.response?.data?.message || "Failed to fetch contacts"
+      );
+    }
+  }
+);
+
+/* =========================
+   VIEW CONTACT
+========================= */
+export const viewContactThunk = createAsyncThunk(
+  "contact/admin/view",
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.get(VIEW_CONTACT_URL(id));
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message || "Failed to fetch contact details"
+      );
+    }
+  }
+);
+
+/* =========================
+   DELETE CONTACT
+========================= */
+export const deleteContactThunk = createAsyncThunk(
+  "contact/admin/delete",
+  async (id, { rejectWithValue }) => {
+    try {
+      await axiosInstance.delete(DELETE_CONTACT_URL(id));
+      return id;
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message || "Failed to delete contact"
       );
     }
   }
@@ -45,51 +86,62 @@ export const getAdminContactsThunk = createAsyncThunk(
 const contactSlice = createSlice({
   name: "contact",
   initialState: {
-    loading: false,
+    /* loaders */
+    listLoading: false,
+    viewLoading: false,
+    deleteLoading: false,
+
     success: false,
     error: null,
 
-    // Contact submit
+    /* submit */
     submittedContact: null,
 
-    // Admin contact list
+    /* list */
     contacts: [],
     pagination: {},
+
+    /* view */
+    selectedContact: null,
   },
+
   reducers: {
     resetContactState: (state) => {
-      state.loading = false;
-      state.success = false;
+      state.listLoading = false;
+      state.viewLoading = false;
+      state.deleteLoading = false;
       state.error = null;
+      state.success = false;
       state.submittedContact = null;
+      state.selectedContact = null;
     },
   },
+
   extraReducers: (builder) => {
     builder
 
       /* ================= SUBMIT CONTACT ================= */
       .addCase(submitContactThunk.pending, (state) => {
-        state.loading = true;
-        state.error = null;
+        state.listLoading = true;
       })
       .addCase(submitContactThunk.fulfilled, (state, action) => {
-        state.loading = false;
+        state.listLoading = false;
         state.success = true;
         state.submittedContact = action.payload;
       })
       .addCase(submitContactThunk.rejected, (state, action) => {
-        state.loading = false;
+        state.listLoading = false;
         state.error = action.payload;
       })
 
-      /* ================= ADMIN CONTACT LIST ================= */
+      /* ================= CONTACT LIST ================= */
       .addCase(getAdminContactsThunk.pending, (state) => {
-        state.loading = true;
-        state.error = null;
+        state.listLoading = true;
       })
       .addCase(getAdminContactsThunk.fulfilled, (state, action) => {
-        state.loading = false;
-        state.contacts = action.payload.data; // ✅ contacts array
+        state.listLoading = false;
+
+        state.contacts = action.payload.data;
         state.pagination = {
           current_page: action.payload.current_page,
           last_page: action.payload.last_page,
@@ -98,7 +150,35 @@ const contactSlice = createSlice({
         };
       })
       .addCase(getAdminContactsThunk.rejected, (state, action) => {
-        state.loading = false;
+        state.listLoading = false;
+        state.error = action.payload;
+      })
+
+      /* ================= VIEW CONTACT ================= */
+      .addCase(viewContactThunk.pending, (state) => {
+        state.viewLoading = true;
+      })
+      .addCase(viewContactThunk.fulfilled, (state, action) => {
+        state.viewLoading = false;
+        state.selectedContact = action.payload;
+      })
+      .addCase(viewContactThunk.rejected, (state, action) => {
+        state.viewLoading = false;
+        state.error = action.payload;
+      })
+
+      /* ================= DELETE CONTACT ================= */
+      .addCase(deleteContactThunk.pending, (state) => {
+        state.deleteLoading = true;
+      })
+      .addCase(deleteContactThunk.fulfilled, (state, action) => {
+        state.deleteLoading = false;
+        state.contacts = state.contacts.filter(
+          (item) => item.id !== action.payload
+        );
+      })
+      .addCase(deleteContactThunk.rejected, (state, action) => {
+        state.deleteLoading = false;
         state.error = action.payload;
       });
   },

@@ -6,76 +6,57 @@ import step3Img from "../../assets/process_step3.svg";
 const CapitalProcess = () => {
   return (
     <section className="w-full bg-[#ECF3F2] py-10 px-4 sm:px-8 md:px-16 lg:px-24">
-
-      {/* Heading */}
-      <h2
-        className="text-[#1B3D36] text-[40px] sm:text-[48px] font-medium text-center mb-16"
-        style={{ fontFamily: "Inter" }}
-      >
-        Our Process
-      </h2>
-
-      {/* MAIN GRID */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 items-start">
-
-        {/* LEFT SIDE */}
-        <div className="flex flex-col items-center text-center space-y-20 md:space-y-24">
-
-          {/* Step 1 */}
-          <div className="max-w-[260px] flex flex-col items-center">
-            <img src={step1Img} className="w-[93px] h-[112px] mb-4" alt="Step 1" />
-            <p className="text-[#000000] text-[16px] font-medium leading-relaxed">
-              We review your investment opportunity to see if you are a good fit
-              for our investors.
-            </p>
-          </div>
-
-          {/* Step 3 (Left Side) */}
-          <div className="max-w-[260px] flex flex-col items-center">
-            <img src={step2Img} className="w-[121px] h-[119px] mb-4" alt="Step 2" />
-            <p className="text-[#000000] text-[16px] font-medium leading-relaxed">
-              For companies that are qualified and engage us, we list you in our
-              broker-dealer marketplace, highlight your opportunity to our
-              investor database, and continue advising until goals are reached.
-            </p>
-          </div>
-        </div>
-
-        {/* NUMBER LINE (HIDE ON MOBILE, SHOW ON DESKTOP) */}
-        <div className="hidden md:flex flex-col items-center justify-center">
-
-          {/* Step 1 Number */}
-          <span className="text-[#FBB91D] font-semibold text-lg mb-2">1</span>
-
-          {/* Line 1 */}
-          <div className="w-[2px] h-[200px] bg-[#FBB91D]/60"></div>
-
-          {/* Step 2 Number */}
-          <span className="text-[#FBB91D] font-semibold text-lg my-2">2</span>
-
-          {/* Line 2 */}
-          <div className="w-[2px] h-[200px] bg-[#FBB91D]/60"></div>
-
-          {/* Step 3 Number */}
-          <span className="text-[#FBB91D] font-semibold text-lg mt-2">3</span>
-        </div>
-
-        {/* RIGHT SIDE */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-[300px] mx-auto md:mx-0 md:mt-32">
-
+      <div className="container mx-auto space-y-16">
+        {/* ---------------- Step 1 ---------------- */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
           <img
-            src={step3Img}
-            className="w-[119px] h-[123px] mb-4 mx-auto md:mx-0"
-            alt="Step 3"
+            src={step1Img}
+            className="w-[180px] sm:w-[220px]  mb-4 md:mb-0 mx-auto"
+            alt="Step 1"
           />
-
-          <p className="text-[#000000] text-[16px] font-medium leading-relaxed">
-            If you are not prepared to raise at least $5M through a Reg D or Reg A+
-            offering, our team will consult and advise you. Within 90 days, you will
-            be fully prepared to raise the capital you need.
-          </p>
+          <div className="text-center md:text-left">
+            <h3 className="text-[#1B3D36] text-[18px] sm:text-[22px] md:text-[28px] lg:text-[32px] font-medium mb-6">
+              Capital Deployment Strategy
+            </h3>
+            <p className="text-[#000000] text-[14px] sm:text-[15px] md:text-[16px]  leading-relaxed">
+              Capital raised will be allocated across:
+            </p>
+            <ul className="list-disc list-inside  text-[13px] sm:text-[14px] md:text-[16px] leading-[24px] text-gray-700 mt-2 space-y-1 text-left md:text-left">
+              <li>Seed and early-stage investments</li>
+              <li>Select growth-stage opportunities </li>
+              <li>Follow-on investments in high-performing portfolio companies</li>
+            </ul>
+            <p className="text-[#000000] text-[14px] sm:text-[15px] md:text-[16px]  leading-relaxed mt-4">
+              Our strategy emphasizes capital efficiency, scalable business models, and strong founder alignment.
+            </p>
+          </div>
         </div>
 
+        {/* ---------------- Step 2 ---------------- */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
+          <div className="text-center md:text-left order-2 md:order-1">
+            <h3 className="text-[#1B3D36] text-[18px] sm:text-[22px] md:text-[28px] lg:text-[32px] font-medium mb-6">
+              Target Investors
+            </h3>
+            <p className="text-[#000000] text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed">
+              We work with:
+            </p>
+            <ul className="list-disc list-inside text-[13px] sm:text-[14px] md:text-[16px] leading-[24px] text-gray-700 mt-2 space-y-1 text-left md:text-left">
+              <li>High-Net-Worth Individuals </li>
+              <li>Angel Investors</li>
+              <li>Family Offices</li>
+              <li>Institutional & Strategic Investors</li>
+            </ul>
+            <p className="text-[#000000] text-[14px] sm:text-[15px] md:text-[16px]  leading-relaxed mt-4">
+              Investment structures are designed to suit both individual deal participation and portfolio-based exposure.
+            </p>
+          </div>
+          <img
+            src={step2Img}
+            className="w-[180px] sm:w-[220px]  mb-4 md:mb-0 mx-auto order-1 md:order-2"
+            alt="Step 2"
+          />
+        </div>
       </div>
     </section>
   );

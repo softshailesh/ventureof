@@ -1,115 +1,71 @@
 import React from "react";
-import blog1 from "../../assets/blog1.webp";
-import blog2 from "../../assets/blog2.webp";
+import approach from "../../assets/approach.png"
+import targeting from "../../assets/targeting.png"
 
-const BlogSection = () => {
-    return (
-        <section className="w-full bg-[#E6EFEE] py-16 px-6 md:px-16 lg:px-28">
+export default function CardsSection() {
+  const cards = [
+    {
+      title: "Our Approach",
+      img: [approach],
+      color: "bg-[#42b87c]",
+      points: [
+        "Identify promising founders and ideas",
+        "Evaluate market potential, traction, and execution capability",
+        "Invest capital aligned with growth milestones",
+        "Support startups with hands-on involvement",
+        "Scale through follow-on funding and strategic partnerships"
+      ],
+    },
+    {
+      title: "Our Vision",
+      img: [targeting]  ,
+      desc :"",
+      color: "bg-[#42b87c]",
+      points: ["To build a strong ecosystem where innovative startups thrive and investors participate in meaningful, long-term value creation."],
+    },
+  ];
 
-            {/* Heading */}
-            <h2 className="text-center text-[48px] font-semibold text-[#1C2A25] mb-12">
-                Blogs
-            </h2>
+  return (
+    <div className="w-full flex flex-wrap justify-center gap-12 py-16 bg-white blogsection" >
+      {cards.map((c, i) => (
+        <div
+          key={i}
+          className="bg-white w-80 shadow-xl rounded-3xl pt-24 pb-10 px-8 text-center relative md:mt-0 sm:mt-40"
+        >
+          {/* Floating Color Image Box */}
+          <div
+            className={`absolute -top-14 left-1/2 -translate-x-1/2 ${c.color} w-32 h-32 rounded-xl flex justify-center items-center shadow-lg`}
+          >
+            <img
+              src={c.img}
+              alt={c.title}
+              className="w-20 h-20 object-contain"
+            />
+          </div>
 
-            {/* Blog Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl mx-auto">
+          {/* Heading */}
+          <h3 className="font-bold text-[18px] sm:text-[22px] md:text-[28px] lg:text-[32px] relative z-10">{c.title}</h3>
 
-                {/* ========== BLOG CARD 1 ========== */}
-                <div className="w-full">
+          {/* Description */}
+          {c.desc && (
+            <p className="text-gray-500 mt-4 leading-relaxed text-sm">
+              {c.desc}
+            </p>
+          )}
 
-                    {/* Image */}
-                    <img
-                        src={blog1}
-                        alt="Blog Image"
-                        className="
-              w-full 
-              max-w-[637px] 
-              h-auto 
-              md:h-[358px] 
-              object-cover 
-              rounded-md
-            "
-                    />
+          {/* Bullet Points for Approach */}
+          {c.points.length > 0 && (
+            <ul className="mt-6 text-gray-600 space-y-2 text-left mx-auto w-fit">
+              {c.points.map((pt, j) => (
+                <li key={j} className="flex items-center gap-2">
+                  <span className="text-sm">{pt}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 
-                    {/* Date + Time */}
-                    <div className="flex gap-8 text-[16px] text-[#FBB91D] mt-3">
-                        <span>November 21, 2024</span>
-                        <span>6:00 AM</span>
-                    </div>
-
-                    {/* Title */}
-                    <h3
-                        className="
-              text-[28px] 
-              md:text-[34px] 
-              lg:text-[38px] 
-              font-semibold 
-              text-[#1C2A25] 
-              mt-2 
-              leading-[100%] 
-              max-w-full 
-              lg:w-[560px]
-            "
-                    >
-                        Finding Passion in Solving Real <br /> Problems
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-black text-[16px] font-medium leading-relaxed mt-5 max-w-md">
-                        Lorem ipsum is simply free text dolor sit amet, consect et dolore magna aliqua lonm andhn. Lorem ipsum is si text dolor sit amet, consectetur no tted adipisicing elit a et dolore magna aliqua lonm andhn. Lorem ipsum is simply free text dolor sit amet, consect et dolore magna aliqua lonm andhn. Lorem ipsum is si text dolor sit amet, consectetur no tted adipisicing elit a et dolore magna aliqua lonm andhn. More
-                    </p>
-
-                </div>
-
-                {/* ========== BLOG CARD 2 ========== */}
-                <div className="w-full">
-
-                    {/* Image */}
-                    <img
-                        src={blog2}
-                        alt="Blog Image"
-                        className="
-              w-full 
-              max-w-[637px] 
-              h-auto 
-              md:h-[358px] 
-              object-cover 
-              rounded-md
-            "
-                    />
-
-                    {/* Date + Time */}
-                    <div className="flex gap-8 text-[16px] text-[#FBB91D] mt-3">
-                        <span>November 21, 2024</span>
-                        <span>6:00 AM</span>
-                    </div>
-
-                    {/* Title */}
-                    <h3
-                        className="
-              text-[28px] 
-              md:text-[34px] 
-              lg:text-[40px] 
-              font-semibold 
-              text-[#1C2A25] 
-              mt-2 
-              leading-[100%] 
-              lg:w-[621px]   
-            "
-                    >
-                        Building a Strong Foundation: <br /> Passion, Teamwork, Process
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-[#44554C] text-[16px] font-medium leading-relaxed mt-5 ">
-                        Lorem ipsum is simply free text dolor sit amet, consect et dolore magna aliqua lonm andhn. Lorem ipsum is si text dolor sit amet, consectetur no tted adipisicing elit a et dolore magna aliqua lonm andhn. Lorem ipsum is simply free text dolor sit amet, consect et dolore magna aliqua lonm andhn. Lorem ipsum is si text dolor sit amet, consectetur no tted adipisicing elit a et dolore magna aliqua lonm andhn. More
-                    </p>
-
-                </div>
-
-            </div>
-        </section>
-    );
-};
-
-export default BlogSection;
