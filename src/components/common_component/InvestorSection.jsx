@@ -26,138 +26,149 @@ const fadeDown = {
 
 const InvestorSection = () => {
   return (
-    <div className="w-full bg-[#F1FAF5] px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28 py-16 md:py-24 space-y-20">
-      <h2
-        className="font-inter font-medium text-[28px] sm:text-[32px] md:text-[36px] lg:text-[42px] leading-[120%] lg:leading-[48px] text-center"
+    <div className="w-full bg-[#F1FAF5] px-6 md:px-10 lg:px-20 xl:px-28 py-16 md:py-20 lg:py-24">
+
+  {/* Title */}
+  <h2 className="text-[26px] sm:text-[30px] md:text-[34px] lg:text-[42px] font-medium text-center mb-16">
+    Why Invest With Us
+  </h2>
+
+  <div className="max-w-7xl mx-auto space-y-20">
+
+    {/* -------- Row 1 -------- */}
+    <motion.div
+      className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={fadeUp}
+    >
+      {/* TEXT */}
+      <motion.div variants={fadeLeft} className="w-full lg:w-1/2 text-center lg:text-left">
+        <h3 className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-medium text-[#0D3D2E]">
+          Curated Deal Flow
+        </h3>
+
+        <p className="text-[14px] md:text-[16px] text-gray-700 mt-4 leading-[26px]">
+          We source and screen startups through a rigorous evaluation
+          process, focusing on strong teams, scalable models, and
+          high-growth markets.
+        </p>
+      </motion.div>
+
+      {/* IMAGE */}
+      <motion.div variants={fadeRight} className="w-full lg:w-1/2 flex justify-center">
+        <img
+          src={img1}
+          className="w-full max-w-[520px] h-auto rounded-lg shadow-md"
+        />
+      </motion.div>
+    </motion.div>
+
+    {/* -------- Row 2 -------- */}
+    <motion.div
+      className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={fadeDown}
+    >
+      {/* TEXT */}
+      <motion.div
+        className="w-full lg:w-1/2 lg:order-2 text-center lg:text-left"
+        variants={fadeRight}
       >
-        Why Invest With Us
-      </h2>
+        <h3 className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-medium text-[#0D3D2E]">
+          Professional Due Diligence
+        </h3>
 
-      <div className="container mx-auto space-y-16">
-        {/* ---------------- Row 1 ---------------- */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={fadeUp}
-        >
-          <motion.div variants={fadeLeft} className="text-center md:text-left">
-            <h3 className="font-inter font-medium text-[18px] sm:text-[22px] md:text-[28px] lg:text-[32px] leading-[120%] lg:leading-[52px] text-[#0D3D2E]">
-              Curated Deal Flow
-            </h3>
-            <p className="font-inter font-medium text-[14px] sm:text-[15px] md:text-[16px] leading-[26px] mt-4 text-gray-700">
-              We source and screen startups through a rigorous evaluation
-              process, focusing on strong teams, scalable models, and
-              high-growth markets.
-            </p>
-          </motion.div>
+        <p className="text-[14px] md:text-[16px] text-gray-700 mt-4">
+          Every investment opportunity undergoes detailed analysis covering:
+        </p>
 
-          <motion.div className="w-full h-[250px] sm:h-[300px] md:h-[350px]" variants={fadeRight}>
-            <img
-              src={img1}
-              alt="Investment discussion"
-              className="w-full h-full object-cover object-center rounded-lg shadow-md"
-            />
-          </motion.div>
-        </motion.div>
+        <ul className="list-disc text-gray-700 text-[14px] md:text-[16px] space-y-2 pl-5 mt-3">
+          <li>Market size and competitive landscape</li>
+          <li>Business model viability</li>
+          <li>Financial projections</li>
+          <li>Founder capability and execution risk</li>
+        </ul>
+      </motion.div>
 
-        {/* ---------------- Row 2 ---------------- */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={fadeDown}
-        >
-          <motion.div
-            className="w-full h-[250px] sm:h-[300px] md:h-[350px] order-2 md:order-1"
-            variants={fadeLeft}
-          >
-            <img
-              src={img2}
-              alt="Investment discussion"
-              className="w-full h-full object-cover object-center rounded-lg shadow-md"
-            />
-          </motion.div>
+      {/* IMAGE */}
+      <motion.div
+        className="w-full lg:w-1/2 lg:order-1 flex justify-center"
+        variants={fadeLeft}
+      >
+        <img
+          src={img2}
+          className="w-full max-w-[520px] h-auto rounded-lg shadow-md"
+        />
+      </motion.div>
+    </motion.div>
 
-          <motion.div className="order-1 md:order-2 text-center md:text-left" variants={fadeRight}>
-            <h3 className="font-inter font-medium text-[18px] sm:text-[22px] md:text-[28px] lg:text-[32px] leading-[120%] lg:leading-[52px] text-[#0D3D2E]">
-              Professional Due Diligence.
-            </h3>
+    {/* -------- Row 3 -------- */}
+    <motion.div
+      className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={fadeUp}
+    >
+      <motion.div variants={fadeLeft} className="w-full lg:w-1/2 text-center lg:text-left">
+        <h3 className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-medium text-[#0D3D2E]">
+          Active Portfolio Support
+        </h3>
 
-            <p className="font-inter font-medium text-[14px] sm:text-[15px] md:text-[16px] leading-[26px] mt-4 text-gray-700">
-              Every investment opportunity undergoes detailed analysis covering:
-            </p>
+        <p className="text-[14px] md:text-[16px] text-gray-700 mt-4 leading-[26px]">
+          We work closely with portfolio companies to improve performance,
+          governance, and investor readiness—protecting and enhancing
+          investor value.
+        </p>
+      </motion.div>
 
-            <ul className="list-disc text-gray-700 text-sm sm:text-[14px] md:text-[15px] space-y-2 pl-5 mt-3 text-left md:text-left">
-              <li>Market size and competitive landscape</li>
-              <li>Business model viability</li>
-              <li>Financial projections</li>
-              <li>Founder capability and execution risk </li>
-            </ul>
-          </motion.div>
-        </motion.div>
+      <motion.div variants={fadeRight} className="w-full lg:w-1/2 flex justify-center">
+        <img
+          src={img1}
+          className="w-full max-w-[520px] h-auto rounded-lg shadow-md"
+        />
+      </motion.div>
+    </motion.div>
 
-        {/* ---------------- Row 3 ---------------- */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={fadeUp}
-        >
-          <motion.div variants={fadeLeft} className="text-center md:text-left">
-            <h3 className="font-inter font-medium text-[18px] sm:text-[22px] md:text-[28px] lg:text-[32px] leading-[120%] lg:leading-[52px] text-[#0D3D2E]">
-              Active Portfolio Support
-            </h3>
-            <p className="font-inter font-medium text-[14px] sm:text-[15px] md:text-[16px] leading-[26px] mt-4 text-gray-700">
-              We work closely with portfolio companies to improve performance,
-              governance, and investor readiness—protecting and enhancing
-              investor value.
-            </p>
-          </motion.div>
+    {/* -------- Row 4 -------- */}
+    <motion.div
+      className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={fadeDown}
+    >
+      <motion.div
+        className="w-full lg:w-1/2 lg:order-2 text-center lg:text-left"
+        variants={fadeRight}
+      >
+        <h3 className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-medium text-[#0D3D2E]">
+          Diversified Exposure
+        </h3>
 
-          <motion.div className="w-full h-[250px] sm:h-[300px] md:h-[350px]" variants={fadeRight}>
-            <img
-              src={img1}
-              alt="Investment discussion"
-              className="w-full h-full object-cover object-center rounded-lg shadow-md"
-            />
-          </motion.div>
-        </motion.div>
+        <p className="text-[14px] md:text-[16px] text-gray-700 mt-4 leading-[26px]">
+          Investors gain access to multiple startups across sectors and
+          stages, reducing single-company risk.
+        </p>
+      </motion.div>
 
-        {/* ---------------- Row 4 ---------------- */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={fadeDown}
-        >
-          <motion.div
-            className="w-full h-[250px] sm:h-[300px] md:h-[350px] order-2 md:order-1"
-            variants={fadeLeft}
-          >
-            <img
-              src={img2}
-              alt="Investment discussion"
-              className="w-full h-full object-cover object-center rounded-lg shadow-md"
-            />
-          </motion.div>
+      <motion.div
+        className="w-full lg:w-1/2 lg:order-1 flex justify-center"
+        variants={fadeLeft}
+      >
+        <img
+          src={img2}
+          className="w-full max-w-[520px] h-auto rounded-lg shadow-md"
+        />
+      </motion.div>
+    </motion.div>
 
-          <motion.div className="order-1 md:order-2 text-center md:text-left" variants={fadeRight}>
-            <h3 className="font-inter font-medium text-[18px] sm:text-[22px] md:text-[28px] lg:text-[32px] leading-[120%] lg:leading-[52px] text-[#0D3D2E]">
-              Diversified Exposure
-            </h3>
-            <p className="font-inter font-medium text-[14px] sm:text-[15px] md:text-[16px] leading-[26px] mt-4 text-gray-700">
-              Investors gain access to multiple startups across sectors and
-              stages, reducing single-company risk.
-            </p>
-          </motion.div>
-        </motion.div>
-      </div>
-    </div>
+  </div>
+</div>
   );
 };
 
